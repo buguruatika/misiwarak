@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Warak Si Penyelamat Lingkungan</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      background-color: #090d16; 
+      background-image: radial-gradient(circle at 50% 30%, rgba(30, 58, 138, 0.4), rgba(15, 23, 42, 0.95)), url('https://i.imgur.com/Xd0njCu.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    .heading-font { font-family: 'Orbitron', sans-serif; }
+    .space-glass {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.45);
+    }
+    .space-glass-p1 {
+      background: rgba(12, 42, 77, 0.85);
+      border: 2px solid rgba(56, 189, 248, 0.7);
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+    }
+    .space-glass-p2 {
+      background: rgba(77, 36, 16, 0.85);
+      border: 2px solid rgba(251, 146, 60, 0.7);
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    }
+    @keyframes turnPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 14px currentColor; }
+      50% { transform: scale(1.02); box-shadow: 0 0 26px currentColor; }
+    }
+    .active-turn-p1 { animation: turnPulse 2s infinite ease-in-out; border-color: #38bdf8 !important; color: #38bdf8; }
+    .active-turn-p2 { animation: turnPulse 2s infinite ease-in-out; border-color: #fb923c !important; color: #fb923c; }
+    .btn-hover-scale { transition: all 0.2s ease; }
+    .btn-hover-scale:hover { transform: scale(1.02); }
+    .btn-hover-scale:active { transform: scale(0.98); }
+    
+    @keyframes floatWarak { 
+      0%, 100% { transform: translateY(0px) rotate(0deg); } 
+      50% { transform: translateY(-12px) rotate(1deg); } 
+    }
+    .animate-float-warak { animation: floatWarak 4s ease-in-out infinite; }
+    
+    @keyframes pulseCardGlow {
+      0%, 100% { box-shadow: 0 0 12px rgba(56, 189, 248, 0.3); border-color: rgba(56, 189, 248, 0.5); }
+      50% { box-shadow: 0 0 24px rgba(56, 189, 248, 0.9); border-color: rgba(56, 189, 248, 1); }
+    }
+    .pulse-card { animation: pulseCardGlow 2s infinite ease-in-out !important; }
+    
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #0284c7; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+  </style>
+</head>
+<body class="text-slate-100 h-[100dvh] flex flex-col relative overflow-hidden text-[13px] sm:text-sm">
+
+  <!-- LAPISAN PEMBUKA (UNLOCK AUDIO BROWSER) -->
+  <div id="audio-unlock-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center transition-opacity duration-500 bg-slate-950/95 backdrop-blur-md">
+    <div class="relative z-10 flex flex-col items-center justify-center space-y-4 sm:space-y-6 bg-slate-900/90 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] backdrop-blur-md border-2 border-cyan-500/50 shadow-[0_0_50px_rgba(6,182,212,0.4)] max-w-xl mx-4 text-center">
+      <img src="https://i.imgur.com/qTQOPGx.png" alt="Robot Warak" onerror="this.src='https://placehold.co/180x180/0e7490/ffffff?text=WARAK+ROBOT'" class="w-32 h-32 sm:w-44 sm:h-44 object-contain animate-float-warak drop-shadow-[0_0_35px_rgba(56,189,248,0.8)]" />
+      <h2 class="heading-font text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-100 to-amber-300 drop-shadow-lg leading-tight">
+        WARAK SI PENYELAMAT LINGKUNGAN
+      </h2>
+      <p class="text-slate-200 font-medium text-xs sm:text-sm max-w-md leading-relaxed">
+        Sistem komunikasi dan suara penjelajahan antariksa siap diaktifkan. Klik tombol di bawah untuk menyalakan Robot Warak!
+      </p>
+      <button onclick="unlockGameSystem()" class="mt-2 sm:mt-4 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs sm:text-base tracking-wide shadow-[0_0_25px_rgba(6,182,212,0.8)] transition transform hover:scale-105 flex items-center gap-2 cursor-pointer active:scale-95">
+        <span>Aktifkan Sistem Warak</span> 🚀
+      </button>
+    </div>
+  </div>
+
+  <!-- LAYAR DARURAT BAHAN BAKAR -->
+  <div id="fuel-emergency-overlay" class="fixed inset-0 z-[200] flex flex-col items-center justify-center space-y-4 sm:space-y-6 transition-opacity duration-500 bg-slate-950/95 hidden p-4">
+    <img src="https://i.imgur.com/qTQOPGx.png" alt="Robot Warak" onerror="this.src='https://placehold.co/160x160/e11d48/ffffff?text=DARURAT'" class="w-32 h-32 sm:w-44 sm:h-44 object-contain animate-float-warak drop-shadow-[0_0_40px_rgba(225,29,72,0.9)]" />
+    <h2 class="heading-font text-2xl sm:text-3xl md:text-4xl font-black text-rose-500 text-center px-4 animate-pulse drop-shadow-lg">
+      PERINGATAN: BAHAN BAKAR KOSONG!
+    </h2>
+    <p class="text-slate-200 text-xs sm:text-sm max-w-lg text-center px-4 leading-relaxed">
+      Roket kehabisan tenaga metana untuk kembali ke Bumi! Kita butuh bahan bakar darurat secepatnya. Segera temui Robot Warak di Stasiun GEM luar angkasa untuk memilah sampah daur ulang menjadi bahan bakar!
+    </p>
+    <a href="https://gemini.google.com/gem/1yTVsRvnzPxOo0nnoyLj0BiC6DHlEmtbv?usp=sharing" target="_blank" rel="noopener noreferrer" class="mt-2 px-6 sm:px-8 py-3.5 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 hover:from-rose-500 hover:to-red-600 text-white font-black text-xs sm:text-base tracking-wide shadow-[0_0_30px_rgba(225,29,72,0.8)] transition transform hover:scale-105 flex items-center gap-2">
+      <span>Menuju Stasiun GEM Warak</span> 🚀
+    </a>
+  </div>
+
+  <!-- STARFIELD BACKGROUND CANVAS -->
+  <canvas id="starfield" class="fixed inset-0 pointer-events-none z-0 opacity-80"></canvas>
+
+  <header class="relative z-20 border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-md shrink-0">
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-2 sm:py-2.5 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-2.5 cursor-pointer group" onclick="gameEngine.backToHomePortal()" title="Warak Penyelamat">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-sky-950/80 flex items-center justify-center shadow-lg border border-cyan-500/40 overflow-hidden">
+            <img src="https://i.imgur.com/qTQOPGx.png" alt="Logo Warak" onerror="this.src='https://placehold.co/40x40/0284c7/ffffff?text=W'" class="w-full h-full object-contain p-0.5" />
+          </div>
+          <div>
+            <h1 class="heading-font text-[11px] sm:text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-amber-300 leading-tight">
+              WARAK PENYELAMAT
+            </h1>
+            <p class="text-[8px] sm:text-[10px] text-slate-400 font-medium">Bumi • Mars • Venus</p>
+          </div>
+        </div>
+
+        <!-- Tombol Home Cepat di Samping Judul -->
+        <button onclick="gameEngine.backToHomePortal()" title="Kembali ke Menu Beranda" class="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/50 text-cyan-300 hover:text-white transition shadow-sm active:scale-95 text-[10px] sm:text-xs font-bold cursor-pointer">
+          <span class="text-xs sm:text-sm">🏠</span>
+          <span class="hidden xs:inline sm:inline">Home</span>
+        </button>
+      </div>
+
+      <!-- DUEL / SOLO SCOREBOARD HEADER -->
+      <div id="duel-scoreboard-header" class="hidden items-center gap-1.5 sm:gap-3">
+        <div id="p1-header-badge" class="flex items-center gap-1.5 bg-slate-900/90 border border-cyan-500/50 px-2 py-0.5 sm:py-1 rounded-xl transition">
+          <span class="text-xs sm:text-base">🚀</span>
+          <div>
+            <div class="flex items-center gap-1">
+              <span id="p1-header-name" class="font-bold text-cyan-300 text-[9px] sm:text-xs max-w-[65px] sm:max-w-none truncate">P1</span>
+              <span id="p1-header-lives" class="text-[8px] sm:text-[10px]">❤️❤️❤️</span>
+            </div>
+            <div class="text-[8px] sm:text-[10px] text-cyan-200/90"><span id="p1-header-score">0</span> Pt • <span id="p1-header-stars">0</span>⭐</div>
+          </div>
+        </div>
+
+        <div id="scoreboard-vs" class="heading-font text-[9px] sm:text-xs font-black text-amber-400">VS</div>
+
+        <div id="p2-header-badge" class="flex items-center gap-1.5 bg-slate-900/90 border border-orange-500/50 px-2 py-0.5 sm:py-1 rounded-xl transition">
+          <span class="text-xs sm:text-base">🛸</span>
+          <div>
+            <div class="flex items-center gap-1">
+              <span id="p2-header-name" class="font-bold text-orange-300 text-[9px] sm:text-xs max-w-[65px] sm:max-w-none truncate">P2</span>
+              <span id="p2-header-lives" class="text-[8px] sm:text-[10px]">❤️❤️❤️</span>
+            </div>
+            <div class="text-[8px] sm:text-[10px] text-orange-200/90"><span id="p2-header-score">0</span> Pt • <span id="p2-header-stars">0</span>⭐</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIO AND VOICE TOGGLES -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button title="Suara Narator" onclick="soundNarrator.toggleVoice()" class="bg-sky-950/80 hover:bg-sky-900 border border-sky-400/50 px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm transition text-sky-200 active:scale-95">
+          <span id="voice-icon">🗣️</span>
+        </button>
+        <button title="Musik Latar" onclick="bgmPlayer.toggle()" class="bg-violet-950/80 hover:bg-violet-900 border border-violet-500/50 px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm transition text-violet-200 active:scale-95">
+          <span id="bgm-icon">🎵</span>
+        </button>
+        <button title="Efek Suara" onclick="soundFx.toggleMute()" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-xs sm:text-sm hover:border-cyan-400 transition active:scale-95">
+          <span id="audio-icon">🔊</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 flex-1 w-full max-w-5xl mx-auto flex flex-col p-2 sm:p-4 min-h-0 overflow-y-auto">
+    <div class="w-full flex-1 flex flex-col justify-center h-full max-h-full space-y-2">
+
+      <!-- SCREEN 1: PORTAL HOME -->
+      <section id="screen-home-portal" class="flex flex-col items-center justify-center w-full h-full space-y-4 sm:space-y-6 py-2">
+        <div class="text-center space-y-2 sm:space-y-3">
+          <img src="https://i.imgur.com/qTQOPGx.png" alt="Maskot Robot Warak" onerror="this.src='https://placehold.co/160x160/0284c7/ffffff?text=WARAK'" class="w-28 h-28 sm:w-40 sm:h-40 mx-auto object-contain drop-shadow-[0_0_20px_rgba(56,189,248,0.7)] animate-float-warak" />
+          <div class="inline-block px-3.5 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 font-bold text-[9px] sm:text-xs uppercase tracking-widest shadow-md">
+            Pusat Komando Pembelajaran SD
+          </div>
+          <h2 class="heading-font text-xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-amber-200 drop-shadow-md leading-tight px-2">
+            WARAK SI PENYELAMAT LINGKUNGAN
+          </h2>
+          <p class="text-slate-200 max-w-md mx-auto text-[11px] sm:text-xs bg-slate-950/60 p-2 sm:p-3 rounded-2xl border border-slate-800/80 leading-relaxed px-4">
+            Bantu Robot Warak mengumpulkan sampah dan mengubahnya menjadi bahan bakar metana untuk menjelajahi planet antariksa!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5 w-full max-w-2xl px-2 sm:px-0">
+          <!-- MENU 1: TUJUAN -->
+          <button id="btn-menu-tujuan" onclick="gameEngine.toggleLearningModal(true)" class="btn-hover-scale space-glass p-3 sm:p-4 rounded-2xl border-2 border-blue-500 flex items-center gap-3 transition text-left pulse-card">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-blue-500/20 flex items-center justify-center text-xl sm:text-2xl shadow-inner">🎯</div>
+            <div>
+              <div class="font-black text-blue-300 text-xs sm:text-base leading-tight">1. Tujuan Belajar</div>
+              <div class="text-[9px] sm:text-[11px] text-slate-200">Capaian Fase B & C (Kls 3-6)</div>
+            </div>
+          </button>
+
+          <!-- MENU 2: MATERI -->
+          <button id="btn-menu-materi" onclick="gameEngine.toggleGuideModal(true)" class="opacity-50 grayscale space-glass p-3 sm:p-4 rounded-2xl border-2 border-slate-600 flex items-center gap-3 transition text-left">
+            <div id="bg-icon-materi" class="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-slate-500/20 flex items-center justify-center text-xl sm:text-2xl">
+              <span id="icon-materi" class="hidden">📖</span><span id="lock-materi">🔒</span>
+            </div>
+            <div>
+              <div class="font-black text-indigo-300 text-xs sm:text-base leading-tight">2. Materi Satuan</div>
+              <div id="desc-materi" class="text-[9px] sm:text-[11px] text-slate-400">Buka Tujuan Dulu</div>
+            </div>
+          </button>
+
+          <!-- MENU 3: TANYA WARAK -->
+          <button id="btn-menu-chat" onclick="gameEngine.openChat()" class="opacity-50 grayscale space-glass p-3 sm:p-4 rounded-2xl border-2 border-slate-600 flex items-center gap-3 transition text-left">
+            <div id="bg-icon-chat" class="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-slate-500/20 flex items-center justify-center p-1 border border-slate-500/30">
+              <span id="icon-chat" class="hidden w-full h-full flex items-center justify-center"><img src="https://i.imgur.com/qTQOPGx.png" alt="Warak" class="w-8 h-8 object-contain" /></span>
+              <span id="lock-chat" class="text-xl sm:text-2xl">🔒</span>
+            </div>
+            <div>
+              <div class="font-black text-emerald-300 text-xs sm:text-base leading-tight">3. Tanya Warak AI</div>
+              <div id="desc-chat" class="text-[9px] sm:text-[11px] text-slate-400">Buka Materi Dulu</div>
+            </div>
+          </button>
+
+          <!-- MENU 4: EKSPEDISI -->
+          <button id="btn-menu-ekspedisi" onclick="gameEngine.openEkspedisi()" class="opacity-50 grayscale relative space-glass p-3 sm:p-4 rounded-2xl border-2 border-slate-600 flex items-center gap-3 transition text-left overflow-hidden">
+            <div id="bg-icon-ekspedisi" class="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-slate-600 flex items-center justify-center text-xl sm:text-2xl">
+               <span id="icon-ekspedisi" class="hidden animate-pulse">🚀</span><span id="lock-ekspedisi">🔒</span>
+            </div>
+            <div class="relative z-10">
+              <div class="font-black text-amber-300 text-xs sm:text-base leading-tight">4. Mulai Ekspedisi</div>
+              <div id="desc-ekspedisi" class="text-[9px] sm:text-[11px] text-slate-400">Selesaikan Tanya Warak</div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: REGISTRASI KADET -->
+      <section id="screen-register" class="hidden w-full max-w-lg mx-auto flex flex-col justify-center h-full">
+        <div class="space-glass p-4 sm:p-6 rounded-3xl border border-cyan-400/50 shadow-2xl text-center space-y-4">
+          <div class="flex items-center justify-between">
+            <button onclick="gameEngine.backToHomePortal()" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-bold transition">← Kembali</button>
+            <span class="px-3 py-0.5 bg-cyan-500/20 border border-cyan-400/40 rounded-full text-cyan-300 text-[10px] font-bold">Pos Kadet</span>
+          </div>
+
+          <div class="flex items-center justify-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-2xl shadow-lg">🚀</div>
+            <span id="reg-vs-badge" class="heading-font text-xl font-black text-amber-400">VS</span>
+            <div id="reg-p2-badge" class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-500 to-rose-600 flex items-center justify-center text-2xl shadow-lg">🛸</div>
+          </div>
+
+          <div>
+            <h2 id="reg-title-text" class="heading-font text-base sm:text-xl font-black text-white">Data Kadet Antariksa</h2>
+            <p id="reg-desc-text" class="text-[10px] sm:text-xs text-slate-300">Siapkan data tim sebelum meluncur!</p>
+          </div>
+
+          <form id="register-form" onsubmit="gameEngine.startDuelGame(event)" class="space-y-3 text-left">
+            <div id="reg-grid-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <!-- Kadet 1 -->
+              <div class="p-3 rounded-2xl bg-sky-950/60 border border-cyan-500/40 space-y-2">
+                <div class="text-cyan-300 font-bold text-xs flex items-center gap-1"><span>🚀</span> Kadet 1</div>
+                <input type="text" id="p1-name" required placeholder="Nama Kadet 1" value="Kadet 1" class="w-full px-2.5 py-1.5 rounded-xl bg-slate-900 border border-cyan-500/40 text-white text-xs focus:outline-none focus:border-cyan-400" />
+                <div class="grid grid-cols-2 gap-1.5">
+                  <select id="p1-grade" class="w-full px-2 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[10px]">
+                    <option value="Kelas 3">Kls 3</option><option value="Kelas 4" selected>Kls 4</option><option value="Kelas 5">Kls 5</option><option value="Kelas 6">Kls 6</option>
+                  </select>
+                  <select id="p1-section" class="w-full px-2 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[10px]">
+                    <option value="A" selected>Kombel A</option><option value="B">Kombel B</option><option value="C">Kombel C</option>
+                  </select>
+                </div>
+              </div>
+              
+              <!-- Kadet 2 -->
+              <div id="p2-reg-card" class="p-3 rounded-2xl bg-orange-950/60 border border-orange-500/40 space-y-2">
+                <div class="text-orange-300 font-bold text-xs flex items-center gap-1"><span>🛸</span> Kadet 2</div>
+                <input type="text" id="p2-name" required placeholder="Nama Kadet 2" value="Kadet 2" class="w-full px-2.5 py-1.5 rounded-xl bg-slate-900 border border-orange-500/40 text-white text-xs focus:outline-none focus:border-orange-400" />
+                <div class="grid grid-cols-2 gap-1.5">
+                  <select id="p2-grade" class="w-full px-2 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[10px]">
+                    <option value="Kelas 3">Kls 3</option><option value="Kelas 4" selected>Kls 4</option><option value="Kelas 5">Kls 5</option><option value="Kelas 6">Kls 6</option>
+                  </select>
+                  <select id="p2-section" class="w-full px-2 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[10px]">
+                    <option value="A">Kombel A</option><option value="B" selected>Kombel B</option><option value="C">Kombel C</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-3 rounded-2xl bg-gradient-to-r from-cyan-500 via-sky-400 to-orange-500 text-slate-950 font-black text-xs sm:text-sm tracking-wider hover:opacity-95 shadow-lg shadow-cyan-500/30 transition transform active:scale-95 cursor-pointer">
+              MULAI PELUNCURAN ROKET 🚀
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: GAMEPLAY ARENA -->
+      <section id="screen-arena" class="hidden h-full flex flex-col justify-center space-y-2.5 w-full max-w-2xl mx-auto">
+        <!-- Turn and Timer Announcer -->
+        <div id="turn-announcer-box" class="p-2 sm:p-3 rounded-2xl border flex flex-col gap-1.5 space-glass shrink-0 transition">
+          <div class="flex items-center justify-between gap-1.5">
+            <div class="flex items-center gap-2">
+              <div id="turn-avatar-badge" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-cyan-500 flex items-center justify-center text-lg shadow-md shrink-0">🚀</div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span id="turn-round-title" class="px-2 py-0.5 rounded-md text-[8px] sm:text-[9px] font-black bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">Babak 1</span>
+                  <span id="turn-planet-tag" class="text-[9px] sm:text-[10px] font-bold text-amber-400">Bumi</span>
+                </div>
+                <h3 id="current-player-turn-text" class="heading-font text-xs sm:text-sm font-black text-white leading-tight truncate">Giliran P1</h3>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-1 shrink-0">
+              <div class="flex items-center gap-1 bg-slate-900/90 border border-rose-500/60 px-2 py-1 rounded-xl text-[10px] font-bold text-rose-300 shadow">
+                <span>⏱️</span>
+                <span id="turn-timer-digits" class="heading-font text-xs sm:text-sm font-black text-amber-300 min-w-[32px] text-right">45s</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full bg-slate-950/80 h-2 rounded-full overflow-hidden relative">
+            <div id="turn-timer-bar" class="h-full bg-gradient-to-r from-emerald-500 to-rose-500 transition-all duration-300" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <!-- Timeout Alert Banner -->
+        <div id="timeout-alert-banner" class="hidden p-3 rounded-2xl bg-rose-950/95 border-2 border-rose-500 text-center space-y-1.5 shadow-2xl shrink-0">
+          <h4 id="timeout-alert-title" class="heading-font text-xs sm:text-sm font-black text-rose-300">WAKTU HABIS!</h4>
+          <p id="timeout-alert-desc" class="text-[10px] text-rose-100">Kadet kehilangan 1 Nyawa!</p>
+          <button onclick="gameEngine.dismissTimeoutAlert()" class="px-4 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition active:scale-95">Lanjut Babak ➔</button>
+        </div>
+
+        <!-- Dynamic Game Engine Container -->
+        <div id="gameplay-container" class="flex-1 space-glass p-3 sm:p-4 rounded-3xl border border-slate-700/80 shadow-2xl overflow-y-auto flex flex-col justify-center gap-2">
+          <!-- Dynamic Round Content -->
+        </div>
+      </section>
+
+      <!-- SCREEN 4: TRANSIT KE MARS -->
+      <section id="screen-transit-mars" class="hidden h-full flex flex-col justify-center">
+        <div class="space-glass max-w-sm mx-auto p-5 rounded-3xl border-2 border-cyan-400/70 text-center space-y-3.5 w-full">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-2xl animate-pulse shadow-lg">🔓</div>
+          <div>
+            <h2 class="heading-font text-lg font-black text-white">TRANS-MARS! 🔴</h2>
+            <p class="text-xs text-slate-300 mt-1">Sektor Bumi selesai! Roket metana melaju menuju Mars!</p>
+          </div>
+          <button onclick="gameEngine.launchMarsSector()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-slate-950 font-black text-xs hover:opacity-95 transition shadow-lg active:scale-95">
+            Mendarat di Mars ➔
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 5: TRANSIT KE VENUS -->
+      <section id="screen-transit-venus" class="hidden h-full flex flex-col justify-center">
+        <div class="space-glass max-w-sm mx-auto p-5 rounded-3xl border-2 border-rose-500/70 text-center space-y-3.5 w-full">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-yellow-500 to-orange-600 flex items-center justify-center text-2xl animate-pulse shadow-lg">🔓</div>
+          <div>
+            <h2 class="heading-font text-lg font-black text-white">TRANS-VENUS! 🟡</h2>
+            <p class="text-xs text-slate-300 mt-1">Sektor Mars tuntas! Membelah atmosfer gas Venus!</p>
+          </div>
+          <button onclick="gameEngine.launchVenusSector()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-950 font-black text-xs hover:opacity-95 transition shadow-lg active:scale-95">
+            Tembus Venus ➔
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 6: VICTORY & PODIUM -->
+      <section id="screen-victory" class="hidden h-full flex flex-col justify-center">
+        <div class="space-glass max-w-md mx-auto p-5 rounded-3xl border-2 border-amber-400/60 text-center space-y-4 w-full">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-amber-400 to-yellow-300 flex items-center justify-center text-3xl shadow-[0_0_30px_rgba(251,191,36,0.6)]">🏆</div>
+          <div>
+            <h2 id="victory-heading" class="heading-font text-xl font-black text-white">MISI TUNTAS!</h2>
+            <p id="victory-desc" class="text-xs text-slate-300 mt-1">Evaluasi hasil penyelamatan antariksa.</p>
+          </div>
+          
+          <div id="podium-grid" class="grid grid-cols-2 gap-2 text-left">
+            <div id="podium-p1" class="p-3 rounded-2xl bg-sky-950/70 border border-cyan-400/60 space-y-1">
+              <div class="flex justify-between items-center"><span class="text-xs font-bold text-cyan-300">🚀 <span id="pod-p1-name">P1</span></span><span id="pod-p1-rank" class="px-2 py-0.5 bg-cyan-500 text-black text-[9px] font-black rounded-lg">JUARA</span></div>
+              <div class="text-xs text-cyan-200">Total: <span id="pod-p1-score" class="font-bold">0</span> Pt</div>
+              <div id="pod-p1-details" class="text-[9px] text-cyan-300/80">0⭐ • 3❤️ (Bonus Nyawa)</div>
+            </div>
+            <div id="podium-p2" class="p-3 rounded-2xl bg-orange-950/70 border border-orange-400/60 space-y-1">
+              <div class="flex justify-between items-center"><span class="text-xs font-bold text-orange-300">🛸 <span id="pod-p2-name">P2</span></span><span id="pod-p2-rank" class="px-2 py-0.5 bg-orange-500 text-black text-[9px] font-black rounded-lg">RUNNER</span></div>
+              <div class="text-xs text-orange-200">Total: <span id="pod-p2-score" class="font-bold">0</span> Pt</div>
+              <div id="pod-p2-details" class="text-[9px] text-orange-300/80">0⭐ • 3❤️ (Bonus Nyawa)</div>
+            </div>
+          </div>
+
+          <div class="flex gap-2 justify-center pt-2">
+            <button onclick="gameEngine.rematch()" class="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs transition active:scale-95 shadow">Main Ulang</button>
+            <button onclick="gameEngine.backToHomePortal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition active:scale-95">Menu Utama</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL 1: TUJUAN BELAJAR -->
+  <div id="modal-tujuan" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-3 hidden">
+    <div class="space-glass max-w-sm w-full p-4 sm:p-5 rounded-3xl border border-blue-500/50 shadow-2xl space-y-3">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <h3 class="heading-font text-sm font-bold text-blue-300 flex items-center gap-1.5"><span>🎯</span> Tujuan Belajar</h3>
+        <button onclick="gameEngine.toggleLearningModal(false)" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+      <div class="text-[11px] sm:text-xs text-slate-300 space-y-2 leading-relaxed">
+        <p><strong>Capaian Fase B & C (Kelas 3-6 SD):</strong></p>
+        <ul class="list-disc pl-4 space-y-1 text-slate-300">
+          <li>Mengukur dan memperkirakan massa atau berat benda dalam kehidupan nyata.</li>
+          <li>Memahami relasi konversi satuan berat baku: <em>kg, gram, ons (hg), kuintal (kw), dan ton</em>.</li>
+          <li>Memecahkan persoalan penjumlahan, pengurangan, dan logika seimbang satuan berat.</li>
+        </ul>
+      </div>
+      <button onclick="gameEngine.toggleLearningModal(false)" class="w-full py-2.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition active:scale-95">
+        Saya Mengerti ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL 2: MATERI TANGGA SATUAN -->
+  <div id="modal-materi" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-2 sm:p-4 hidden">
+    <div class="space-glass max-w-md sm:max-w-lg w-full p-4 sm:p-5 rounded-3xl border border-indigo-500/60 shadow-[0_0_35px_rgba(99,102,241,0.3)] space-y-3.5 max-h-[88vh] overflow-y-auto">
+      
+      <!-- Header Materi -->
+      <div class="flex items-center justify-between border-b border-indigo-500/30 pb-2.5">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-lg">📖</div>
+          <div>
+            <h3 class="heading-font text-xs sm:text-sm font-black text-indigo-200">Tangga Satuan Berat Baku</h3>
+            <p class="text-[9px] sm:text-[10px] text-indigo-300/70">Panduan Konversi Satuan untuk Kadet SD</p>
+          </div>
+        </div>
+        <button onclick="gameEngine.toggleGuideModal(false)" class="w-7 h-7 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-sm transition">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-200">
+        
+        <!-- Kartu Cepat / Rumus Kunci Emas -->
+        <div class="bg-gradient-to-r from-indigo-950/90 via-slate-900/90 to-sky-950/90 p-3 rounded-2xl border border-indigo-500/40 shadow-inner space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold text-amber-300 flex items-center gap-1">⚡ Rumus Cepat Kargo:</span>
+            <span class="text-[8px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-400/30 font-semibold">Paling Sering Digunakan</span>
+          </div>
+          <div class="grid grid-cols-2 gap-1.5 text-[10px] font-bold">
+            <div class="bg-slate-950/60 p-1.5 rounded-xl border border-slate-800 flex items-center gap-1.5">
+              <span class="text-amber-400">⚖️</span> <span>1 Ton = <strong>1.000 kg</strong></span>
+            </div>
+            <div class="bg-slate-950/60 p-1.5 rounded-xl border border-slate-800 flex items-center gap-1.5">
+              <span class="text-amber-400">⚖️</span> <span>1 Kuintal = <strong>100 kg</strong></span>
+            </div>
+            <div class="bg-slate-950/60 p-1.5 rounded-xl border border-slate-800 flex items-center gap-1.5">
+              <span class="text-cyan-400">⭐</span> <span>1 kg = <strong>1.000 gram</strong></span>
+            </div>
+            <div class="bg-slate-950/60 p-1.5 rounded-xl border border-slate-800 flex items-center gap-1.5">
+              <span class="text-cyan-400">⭐</span> <span>1 kg = <strong>10 ons (hg)</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visualisasi Tangga Berundak Bertingkat -->
+        <div class="bg-slate-900/95 p-3 rounded-2xl border border-slate-700/80 shadow-md space-y-2">
+          
+          <div class="flex items-center justify-between pb-1">
+            <div class="font-bold text-cyan-300 text-xs">Tangga 7 Satuan Metrik:</div>
+            <div class="text-[8px] text-slate-400">Paling Berat (Atas) ➔ Paling Ringan (Bawah)</div>
+          </div>
+
+          <!-- Petunjuk Panah Aturan Turun & Naik -->
+          <div class="grid grid-cols-2 gap-2 text-[9px] py-1 bg-slate-950/70 p-2 rounded-xl border border-slate-800">
+            <div class="flex items-center gap-1.5 text-rose-400 font-bold">
+              <span class="text-sm">↘️</span>
+              <div>
+                <div>TURUN 1 Tangga:</div>
+                <div class="text-[10px] text-white font-black bg-rose-500/20 px-1 rounded inline-block mt-0.5">Dikali 10 (×10)</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 text-cyan-300 font-bold">
+              <span class="text-sm">↖️</span>
+              <div>
+                <div>NAIK 1 Tangga:</div>
+                <div class="text-[10px] text-white font-black bg-cyan-500/20 px-1 rounded inline-block mt-0.5">Dibagi 10 (÷10)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Tangga Berundak (Cascading Step Ladder) -->
+          <div class="py-2 px-1 flex flex-col gap-1 w-full font-mono font-bold text-[10px]">
+            <!-- Tangga 1: kg -->
+            <div class="flex items-center">
+              <div class="w-0 sm:w-0"></div>
+              <div class="px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md border-b-2 border-amber-700 flex items-center justify-between min-w-[170px] sm:min-w-[190px]">
+                <span>1. kg (Kilogram) ⭐</span>
+                <span class="text-[8px] bg-slate-900 text-amber-300 px-1.5 py-0.5 rounded font-sans">Utama</span>
+              </div>
+            </div>
+            <!-- Tangga 2: hg / ons -->
+            <div class="flex items-center pl-4 sm:pl-7">
+              <div class="px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-lime-500 to-emerald-500 text-slate-950 shadow-md border-b-2 border-lime-700 flex items-center justify-between min-w-[170px] sm:min-w-[190px]">
+                <span>2. hg / Ons ⭐</span>
+                <span class="text-[8px] bg-slate-900 text-lime-300 px-1.5 py-0.5 rounded font-sans">1 hg = 1 ons</span>
+              </div>
+            </div>
+            <!-- Tangga 3: dag -->
+            <div class="flex items-center pl-8 sm:pl-14">
+              <div class="px-2.5 py-1.5 rounded-xl bg-emerald-600 text-white shadow-md border-b-2 border-emerald-800 flex items-center justify-between min-w-[170px] sm:min-w-[190px]">
+                <span>3. dag (Dekagram)</span>
+                <span class="text-[8px] opacity-75 font-sans">×10</span>
+              </div>
+            </div>
+            <!-- Tangga 4: gram -->
+            <div class="flex items-center pl-12 sm:pl-20">
+              <div class="px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md border-b-2 border-cyan-700 flex items-center justify-between min-w-[170px] sm:min-w-[190px]">
+                <span>4. g (Gram) ⭐</span>
+                <span class="text-[8px] bg-slate-900 text-cyan-300 px-1.5 py-0.5 rounded font-sans">Utama</span>
+              </div>
+            </div>
+            <!-- Tangga 5: dg -->
+            <div class="flex items-center pl-16 sm:pl-28">
+              <div class="px-2.5 py-1.5 rounded-xl bg-blue-600 text-white shadow-md border-b-2 border-blue-800 flex items-center justify-between min-w-[170px] sm:min-w-[190px]">
+                <span>5. dg (Desigram)</span>
+                <span class="text-[8px] opacity-75 font-sans">×10</span>
+              </div>
+            </div>
+            <!-- Tangga 6: cg -->
+            <div class="flex items-center pl-20 sm:pl-36">
+              <div class="px-2.5 py-1.5 rounded-xl bg-indigo-600 text-white shadow-md border-b-2 border-indigo-800 flex items-center justify-between min-w-[170px] sm:min-w-[190px]">
+                <span>6. cg (Sentigram)</span>
+                <span class="text-[8px] opacity-75 font-sans">×10</span>
+              </div>
+            </div>
+            <!-- Tangga 7: mg -->
+            <div class="flex items-center pl-24 sm:pl-44">
+              <div class="px-2.5 py-1.5 rounded-xl bg-purple-600 text-white shadow-md border-b-2 border-purple-800 flex items-center justify-between min-w-[170px] sm:min-w-[190px]">
+                <span>7. mg (Miligram)</span>
+                <span class="text-[8px] opacity-75 font-sans">Paling Kecil</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jembatan Keledai / Mnemonic Hafalan SD -->
+          <div class="p-2 rounded-xl bg-slate-950/80 border border-slate-800 text-[9px] text-slate-300 flex items-start gap-1.5">
+            <span class="text-xs">💡</span>
+            <div>
+              <strong class="text-amber-300">Tips Hafalan Cepat:</strong><br/>
+              <span class="text-slate-200 italic">"<strong>K</strong>ucing <strong>H</strong>itam <strong>Da</strong>lam <strong>G</strong>erobak, <strong>D</strong>esak <strong>C</strong>entil <strong>M</strong>ondar-mandir"</span>
+              <div class="text-[8px] text-slate-400 mt-0.5">(<strong>K</strong>g - <strong>H</strong>g - <strong>Da</strong>g - <strong>G</strong> - <strong>D</strong>g - <strong>C</strong>g - <strong>M</strong>g)</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contoh Hitungan Praktis untuk Game -->
+        <div class="p-2.5 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 text-[10px] space-y-1 leading-relaxed">
+          <div class="font-bold text-indigo-300 flex items-center gap-1">
+            <span>🎯</span> Contoh di Babak Permainan:
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[9px] text-slate-300">
+            <div class="bg-slate-900/70 p-1.5 rounded-lg border border-slate-800">
+              • <strong>3 kg ke gram:</strong> Turun 3 tangga (×1.000) = <strong class="text-emerald-300">3.000 g</strong>
+            </div>
+            <div class="bg-slate-900/70 p-1.5 rounded-lg border border-slate-800">
+              • <strong>50 ons ke kg:</strong> Naik 1 tangga (÷10) = <strong class="text-emerald-300">5 kg</strong>
+            </div>
+            <div class="bg-slate-900/70 p-1.5 rounded-lg border border-slate-800">
+              • <strong>2 Ton ke kg:</strong> 2 × 1.000 = <strong class="text-emerald-300">2.000 kg</strong>
+            </div>
+            <div class="bg-slate-900/70 p-1.5 rounded-lg border border-slate-800">
+              • <strong>1 Kuintal ke kg:</strong> 1 × 100 = <strong class="text-emerald-300">100 kg</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tombol Tutup / Siap -->
+      <button onclick="gameEngine.toggleGuideModal(false)" class="w-full py-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 hover:opacity-95 text-white font-bold text-xs transition active:scale-95 shadow-lg shadow-indigo-500/30">
+        Saya Sudah Paham Tangga Satuan! 🚀
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL 3: TANYA WARAK CHAT -->
+  <div id="modal-chat" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-3 hidden">
+    <div class="space-glass max-w-md w-full rounded-3xl border border-emerald-500/50 shadow-2xl flex flex-col h-[85vh] max-h-[580px] overflow-hidden">
+      <!-- Chat Header -->
+      <div class="bg-emerald-950/90 border-b border-emerald-500/30 p-3 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-emerald-500/20 p-1 border border-emerald-400">
+            <img src="https://i.imgur.com/qTQOPGx.png" alt="Warak" onerror="this.src='https://placehold.co/32x32/10b981/ffffff?text=W'" class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <h3 class="heading-font text-xs font-bold text-emerald-300">Robot Warak AI</h3>
+            <p class="text-[9px] text-emerald-200/70">Online • Uji Sampah & Bahan Bakar</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <!-- INDIKATOR SISA WAKTU 10 MENIT -->
+          <div class="flex flex-col items-end">
+            <span class="text-[8px] font-bold text-amber-300 uppercase tracking-wider">Sisa Waktu</span>
+            <div class="bg-slate-900 border border-emerald-500/40 px-2 py-0.5 rounded-lg flex items-center gap-1 shadow-inner">
+              <span class="text-[10px]">⏱️</span>
+              <span id="chat-timer-display" class="heading-font text-xs font-black text-emerald-400 tracking-wider">10:00</span>
+            </div>
+          </div>
+          <button onclick="gameEngine.closeChatModal()" class="text-slate-400 hover:text-white px-2 py-1 text-base">✕</button>
+        </div>
+      </div>
+
+      <!-- Chat History -->
+      <div id="chat-warak-history" class="flex-1 overflow-y-auto p-3 space-y-2.5 bg-slate-900/50 text-[11px]"></div>
+
+      <!-- Quick Action Buttons -->
+      <div id="chat-warak-options" class="px-3 py-2 bg-slate-950 border-t border-slate-800 flex gap-2 justify-center shrink-0">
+        <button onclick="geminiChat.warakPaham()" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold flex items-center gap-1 active:scale-95 transition">
+          <span>Sudah Paham!</span> 🚀
+        </button>
+        <button onclick="geminiChat.warakBelajarLagi()" class="px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-[10px] font-bold flex items-center gap-1 active:scale-95 transition">
+          <span>Tanya Soal Lagi</span> 📚
+        </button>
+      </div>
+
+      <!-- Chat Input Field -->
+      <div class="p-2.5 bg-slate-950/90 border-t border-slate-800 flex gap-2 items-center shrink-0">
+        <input type="text" id="chat-warak-input" placeholder="Ketik jenis sampah dan beratnya (contoh: 2 kg kertas)..." onkeypress="if(event.key==='Enter') geminiChat.sendWarakMessage()" class="flex-1 bg-slate-900 border border-slate-700 text-white text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-emerald-400" />
+        <button onclick="geminiChat.sendWarakMessage()" class="w-9 h-9 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-xs active:scale-95 transition">
+          🚀
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: PILIH MODE MISI -->
+  <div id="modal-mode" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-center justify-center p-3 hidden">
+    <div class="space-glass max-w-xs w-full p-5 rounded-3xl border border-amber-500/50 shadow-2xl text-center space-y-3.5">
+      <h3 class="heading-font text-sm font-bold text-amber-300">Pilih Mode Misi</h3>
+      <div class="space-y-2">
+        <button onclick="gameEngine.selectSoloMode()" class="w-full p-3 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-left flex items-center gap-3 transition">
+          <div class="text-2xl">🧑‍🚀</div>
+          <div>
+            <div class="font-bold text-white text-xs">Latihan Solo</div>
+            <div class="text-[9px] text-slate-400">Tuntaskan 12 misi mandiri.</div>
+          </div>
+        </button>
+        <button onclick="gameEngine.selectDuelMode()" class="w-full p-3 rounded-2xl bg-gradient-to-r from-cyan-800 to-blue-800 hover:from-cyan-700 hover:to-blue-700 text-left flex items-center gap-3 shadow-lg border border-cyan-400/30 transition">
+          <div class="text-2xl">⚔️</div>
+          <div>
+            <div class="font-bold text-white text-xs">Duel 2 Pemain</div>
+            <div class="text-[9px] text-cyan-200">Bergantian bersama teman sekelas!</div>
+          </div>
+        </button>
+      </div>
+      <button onclick="gameEngine.toggleModeModal(false)" class="text-xs text-slate-400 hover:text-white transition">Batal</button>
+    </div>
+  </div>
+
+  <footer class="relative z-20 text-center py-2 shrink-0 text-[10px] text-slate-400 bg-slate-950/90 border-t border-slate-800/80">
+    Pengembang Game : <strong class="text-cyan-300">Atika Rizkiyanti Nurfaidah, S.Pd.</strong> (SDN Karanganyar Gunung 02 Semarang)
+  </footer>
+
+  <script>
+    /* -----------------------------------------
+       1. STARFIELD BACKGROUND CANVAS
+    ----------------------------------------- */
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    let stars = [];
+
+    function resizeStarfield() {
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = [];
+      const numStars = Math.floor((canvas.width * canvas.height) / 3500);
+      for (let i = 0; i < numStars; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 1.6 + 0.3,
+          speed: Math.random() * 0.4 + 0.1,
+          alpha: Math.random()
+        });
+      }
+    }
+    window.addEventListener('resize', resizeStarfield);
+    resizeStarfield();
+
+    function renderStarfield() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let s of stars) {
+        s.y += s.speed;
+        if (s.y > canvas.height) {
+          s.y = 0;
+          s.x = Math.random() * canvas.width;
+        }
+        s.alpha += (Math.random() - 0.5) * 0.05;
+        if (s.alpha < 0.2) s.alpha = 0.2;
+        if (s.alpha > 1) s.alpha = 1;
+        ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
+      }
+      requestAnimationFrame(renderStarfield);
+    }
+    requestAnimationFrame(renderStarfield);
+
+    /* -----------------------------------------
+       2. SOUND FX (Web Audio API)
+    ----------------------------------------- */
+    class SoundFX {
+      constructor() { this.muted = false; this.ctx = null; }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+      }
+      toggleMute() {
+        this.muted = !this.muted;
+        document.getElementById('audio-icon').textContent = this.muted ? '🔇' : '🔊';
+      }
+      playTone(freq, type, dur, gainVal = 0.1) {
+        if (this.muted) return;
+        try {
+          this.init();
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + dur);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + dur);
+        } catch (e) {}
+      }
+      click() { this.playTone(600, 'sine', 0.07, 0.08); }
+      success() {
+        this.playTone(523.25, 'triangle', 0.1, 0.15);
+        setTimeout(() => this.playTone(659.25, 'triangle', 0.12, 0.15), 75);
+        setTimeout(() => this.playTone(783.99, 'triangle', 0.2, 0.15), 150);
+      }
+      meriah() {
+        [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+          setTimeout(() => this.playTone(f, 'sine', 0.2, 0.18), i * 90);
+        });
+      }
+      boom() {
+        if (this.muted) return;
+        try {
+          this.init();
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(140, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(30, this.ctx.currentTime + 0.35);
+          gain.gain.setValueAtTime(0.22, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.35);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.35);
+        } catch (e) {}
+      }
+      laser() {
+        if (this.muted) return;
+        try {
+          this.init();
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(880, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(140, this.ctx.currentTime + 0.2);
+          gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.2);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.2);
+        } catch (e) {}
+      }
+    }
+    const soundFx = new SoundFX();
+
+    /* -----------------------------------------
+       3. RETRO 8-BIT BGM PLAYER
+    ----------------------------------------- */
+    class BGMPlayer {
+      constructor() {
+        this.playing = false;
+        this.ctx = null;
+        this.timer = null;
+        this.step = 0;
+        this.notes = [261.63, 329.63, 392.00, 523.25, 440.00, 349.23, 392.00, 329.63];
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+      }
+      toggle() {
+        this.init();
+        this.playing = !this.playing;
+        const btnIcon = document.getElementById('bgm-icon');
+        if (this.playing) {
+          if (btnIcon) btnIcon.textContent = '🎶';
+          this.startLoop();
+        } else {
+          if (btnIcon) btnIcon.textContent = '🎵';
+          this.stopLoop();
+        }
+      }
+      startLoop() {
+        this.stopLoop();
+        const playNext = () => {
+          if (!this.playing || !this.ctx) return;
+          try {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            const freq = this.notes[this.step % this.notes.length];
+            this.step++;
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+            gain.gain.setValueAtTime(0.025, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.12);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.12);
+          } catch (e) {}
+          this.timer = setTimeout(playNext, 130);
+        };
+        playNext();
+      }
+      stopLoop() {
+        if (this.timer) {
+          clearTimeout(this.timer);
+          this.timer = null;
+        }
+      }
+    }
+    const bgmPlayer = new BGMPlayer();
+
+    /* -----------------------------------------
+       4. SOUND NARRATOR (Web Speech API)
+    ----------------------------------------- */
+    class SoundNarrator {
+      constructor() {
+        this.enabled = true;
+        this.synth = window.speechSynthesis || null;
+      }
+      toggleVoice() {
+        this.enabled = !this.enabled;
+        if (!this.enabled && this.synth) this.synth.cancel();
+        document.getElementById('voice-icon').textContent = this.enabled ? '🗣️' : '🔇';
+      }
+      speak(text) {
+        if (!this.enabled || !this.synth) return;
+        try {
+          this.synth.cancel();
+          const cleanText = text.replace(/SDN\s+/gi, 'Sekolah Dasar Negeri ');
+          const utterance = new SpeechSynthesisUtterance(cleanText);
+          utterance.lang = 'id-ID';
+          utterance.rate = 1.0;
+          utterance.pitch = 1.05;
+          const voices = this.synth.getVoices();
+          const idVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('id'));
+          if (idVoice) utterance.voice = idVoice;
+          this.synth.speak(utterance);
+        } catch (e) {}
+      }
+      speakCurrentTurn() {
+        const c = gameEngine.getCurrentPlayer();
+        const r = gameEngine.activeRounds[gameEngine.currentRoundIndex];
+        if (c && r) {
+          this.speak(`Giliran ${c.name}. Babak ${gameEngine.currentRoundIndex + 1}: ${r.title}. ${r.voiceDesc}`);
+        }
+      }
+      speakVictory() {
+        const w = gameEngine.getWinner();
+        if (w === 'draw') {
+          this.speak('Pertandingan berakhir seri dengan skor seimbang!');
+        } else {
+          this.speak(`Selamat untuk ${w.name}, kamu berhasil menyelesaikan seluruh misi penjelajahan antariksa!`);
+        }
+      }
+    }
+    const soundNarrator = new SoundNarrator();
+
+    function unlockGameSystem() {
+      soundFx.init();
+      soundFx.click();
+      const overlay = document.getElementById('audio-unlock-overlay');
+      if (overlay) {
+        overlay.classList.add('opacity-0');
+        setTimeout(() => overlay.remove(), 500);
+      }
+      setTimeout(() => {
+        soundNarrator.speak('Halo calon kapten! Saya Robot Warak, diciptakan di kota Semarang oleh Bu Guru Atika dari SDN Karanganyar Gunung 02. Roket kita menggunakan bahan bakar metana dari sampah di bumi. Ikuti alur menu misi untuk memulai!');
+      }, 400);
+    }
+  </script>
+
+  <script>
+    /* -----------------------------------------
+       5. WARAK AI CHATBOT (100% OFFLINE TANPA API KEY)
+    ----------------------------------------- */
+    class GeminiChat {
+      constructor() {
+        this.passed = false;
+        this.typing = false;
+        this.history = [];
+        this.stepCount = 0;
+        this.quizIndex = 0;
+        this.chatTimeLimit = 600; // 10 menit (600 detik)
+        this.remainingChatTime = 600;
+        this.chatTimerInterval = null;
+        this.practiceQuestions = [
+          { q: "Saya punya 2 kuintal kardus bekas, berapa kg bahan bakar metana itu?", a: 200, unit: "kg", hint: "Ingat tangga satuan: 1 kuintal = 100 kg. Jadi 2 × 100 = 200 kg!" },
+          { q: "Kru menemukan 50 ons botol plastik di hanggar. Berapa kg gas metana yang dihasilkan?", a: 5, unit: "kg", hint: "10 ons = 1 kg. Naik 1 tangga (÷10), maka 50 ÷ 10 = 5 kg!" },
+          { q: "Untuk peluncuran roket butuh 3 kg bahan bakar. Itu sama dengan berapa gram?", a: 3000, unit: "gram", hint: "Turun 3 tangga dari kg ke gram (×1.000), jadi 3 × 1.000 = 3.000 gram!" },
+          { q: "Jika terkumpul 1 ton sampah organik di stasiun GEM, berapa kuintal itu?", a: 10, unit: "kuintal", hint: "1 ton = 10 kuintal (atau 1.000 kg). Tangki metana kita siap penuh!" }
+        ];
+      }
+
+      startChatTimer() {
+        this.stopChatTimer();
+        this.remainingChatTime = this.chatTimeLimit;
+        this.updateChatTimerDisplay();
+
+        this.chatTimerInterval = setInterval(() => {
+          this.remainingChatTime--;
+          this.updateChatTimerDisplay();
+
+          if (this.remainingChatTime === 60) {
+            soundFx.click();
+            soundNarrator.speak('Waktu diskusi tinggal satu menit lagi Kadet!');
+          }
+
+          if (this.remainingChatTime <= 0) {
+            this.handleChatTimeout();
+          }
+        }, 1000);
+      }
+
+      stopChatTimer() {
+        if (this.chatTimerInterval) {
+          clearInterval(this.chatTimerInterval);
+          this.chatTimerInterval = null;
+        }
+      }
+
+      updateChatTimerDisplay() {
+        const el = document.getElementById('chat-timer-display');
+        if (!el) return;
+        const mins = Math.floor(Math.max(0, this.remainingChatTime) / 60);
+        const secs = Math.max(0, this.remainingChatTime) % 60;
+        el.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+        if (this.remainingChatTime > 120) {
+          el.className = 'heading-font text-xs font-black text-emerald-400 tracking-wider';
+        } else if (this.remainingChatTime > 60) {
+          el.className = 'heading-font text-xs font-black text-amber-300 tracking-wider';
+        } else {
+          el.className = 'heading-font text-xs font-black text-rose-500 tracking-wider animate-pulse';
+        }
+      }
+
+      handleChatTimeout() {
+        this.stopChatTimer();
+        if (this.passed) return;
+        const box = document.getElementById('chat-warak-history');
+        const inp = document.getElementById('chat-warak-input');
+        const opt = document.getElementById('chat-warak-options');
+        if (inp) inp.disabled = true;
+        if (opt) opt.classList.add('hidden');
+
+        if (box) {
+          box.innerHTML += `
+            <div class="flex items-start gap-2 mb-2 max-w-[88%]">
+              <div class="w-6 h-6 rounded-full bg-amber-900 shrink-0 flex items-center justify-center text-xs">⏱️</div>
+              <div class="bg-slate-800 border border-amber-500/50 text-amber-200 text-xs px-3 py-2 rounded-2xl rounded-tl-none leading-relaxed">
+                Waktu diskusi 10 menit telah berakhir! Seluruh data sampah dan konversi metana telah disimpan. Kunci Misi Ekspedisi resmi dibuka!
+              </div>
+            </div>`;
+          box.scrollTop = box.scrollHeight;
+        }
+
+        this.passed = true;
+        soundNarrator.speak('Waktu diskusi 10 menit berakhir! Kunci Misi Ekspedisi telah dibuka. Bersiaplah meluncur!');
+        setTimeout(() => gameEngine.closeChatAndUnlock(), 3000);
+      }
+
+      init() {
+        this.history = [];
+        this.passed = false;
+        this.typing = false;
+        this.stepCount = 0;
+        this.quizIndex = 0;
+        const inp = document.getElementById('chat-warak-input');
+        const box = document.getElementById('chat-warak-history');
+        const opt = document.getElementById('chat-warak-options');
+        if (inp) { inp.value = ''; inp.disabled = false; inp.focus(); }
+        if (opt) opt.classList.remove('hidden');
+        
+        const initMsg = "Halo Kadet! Saya Robot Warak dari SDN Karanganyar Gunung 02 Semarang. Roket butuh bahan bakar metana dari sampah! Ayo sebutkan jenis sampah yang kamu kumpulkan dan beratnya? (Contoh: Kertas bekas 3 kg, Botol 500 gram, atau 2 kuintal kardus).";
+        if (box) {
+          box.innerHTML = `
+            <div class="text-center text-[9px] text-slate-500 mb-2">Sistem Komunikasi Warak Aktif (Mode Mandiri Siap Pakai)</div>
+            <div class="flex items-start gap-2 max-w-[88%]">
+              <div class="w-6 h-6 rounded-full bg-emerald-900 shrink-0 flex items-center justify-center text-xs">🤖</div>
+              <div class="bg-slate-800 border border-emerald-500/30 text-emerald-100 text-xs px-3 py-2 rounded-2xl rounded-tl-none leading-relaxed">${initMsg}</div>
+            </div>`;
+        }
+        setTimeout(() => soundNarrator.speak(initMsg), 400);
+        this.startChatTimer();
+      }
+
+      async sendWarakMessage() {
+        if (this.typing || this.passed) return;
+        const inp = document.getElementById('chat-warak-input');
+        const box = document.getElementById('chat-warak-history');
+        const text = inp.value.trim();
+        if (!text) return;
+
+        // Render user message
+        box.innerHTML += `
+          <div class="flex items-end justify-end gap-1.5 mb-2 w-full">
+            <div class="bg-cyan-700 text-white text-xs px-3 py-2 rounded-2xl rounded-br-none max-w-[85%] leading-relaxed">${text.replace(/</g, "&lt;")}</div>
+          </div>`;
+        inp.value = '';
+        box.scrollTop = box.scrollHeight;
+        this.typing = true;
+        inp.disabled = true;
+
+        const tempId = 'typ-' + Date.now();
+        box.innerHTML += `
+          <div id="${tempId}" class="flex items-start gap-2 mb-2 max-w-[85%]">
+            <div class="w-6 h-6 rounded-full bg-emerald-900 shrink-0 flex items-center justify-center text-xs">🤖</div>
+            <div class="bg-slate-800 text-slate-400 text-xs px-3 py-1.5 rounded-2xl rounded-tl-none">Robot Warak sedang menghitung...</div>
+          </div>`;
+        box.scrollTop = box.scrollHeight;
+
+        this.stepCount++;
+        let reply = "";
+
+        const lower = text.toLowerCase();
+        const numMatch = text.match(/\d+([.,]\d+)?/);
+        const numberVal = numMatch ? parseFloat(numMatch[0].replace(',', '.')) : null;
+
+        // Smart educational NLP matching
+        if (lower.includes('halo') || lower.includes('hai') || lower.includes('pagi') || lower.includes('siang') || lower.includes('sore') || lower.includes('assalam')) {
+          reply = "Halo Kadet penjelajah! Siap memilah sampah menjadi bahan bakar metana? Beritahu saya jenis sampah dan beratnya, misal: <strong class='text-amber-300'>4 kg kardus</strong> atau <strong class='text-cyan-300'>20 ons plastik</strong>!";
+        } else if (lower.includes('ton')) {
+          const val = numberVal || 1;
+          const toKg = val * 1000;
+          const toKw = val * 10;
+          reply = `Luar biasa! Muatan <strong class='text-amber-300'>${val} Ton</strong> setara dengan <strong class='text-emerald-300'>${toKg.toLocaleString('id-ID')} kg</strong> atau <strong class='text-cyan-300'>${toKw} kuintal</strong> metana murni! Daya dorong roket kita menjadi sangat dahsyat!`;
+        } else if (lower.includes('kuintal') || lower.includes('kw')) {
+          const val = numberVal || 1;
+          const toKg = val * 100;
+          reply = `Hebat sekali! <strong class='text-amber-300'>${val} kuintal</strong> sampah daur ulang sama dengan <strong class='text-emerald-300'>${toKg} kg</strong> gas metana (karena 1 kuintal = 100 kg). Reaktor roket semakin siap!`;
+        } else if (lower.includes('ons') || lower.includes('hg')) {
+          const val = numberVal || 10;
+          const toKg = val / 10;
+          const toGram = val * 100;
+          reply = `Pintar! Sampah seberat <strong class='text-amber-300'>${val} ons</strong> bernilai <strong class='text-emerald-300'>${toKg} kg</strong> atau <strong class='text-cyan-300'>${toGram} gram</strong> metana (ingat 1 kg = 10 ons).`;
+        } else if (lower.includes('kg') || lower.includes('kilo')) {
+          const val = numberVal || 2;
+          const toGram = val * 1000;
+          const toOns = val * 10;
+          reply = `Bagus sekali! Sampah seberat <strong class='text-amber-300'>${val} kg</strong> akan disuling menjadi <strong class='text-emerald-300'>${toGram.toLocaleString('id-ID')} gram</strong> metana cair, atau sama dengan <strong class='text-cyan-300'>${toOns} ons</strong>!`;
+        } else if (lower.includes('gram') || lower.includes('gr')) {
+          const val = numberVal || 500;
+          const toKg = val / 1000;
+          reply = `Mantap! Sampah seberat <strong class='text-amber-300'>${val} gram</strong> bernilai <strong class='text-emerald-300'>${toKg} kg</strong> metana. Pengumpulan sampah kecil pun sangat berharga bagi lingkungan!`;
+        } else if (numberVal !== null) {
+          // If the student answers a number directly
+          reply = `Perhitungan yang cermat Kadet! Angka <strong class='text-amber-300'>${numberVal}</strong> sesuai dengan konversi satuan berat yang kita butuhkan. Tangki bahan bakar metana kini terisi optimal!`;
+        } else {
+          reply = "Pengamatan yang bagus! Setiap sampah plastik, kertas, maupun sisa organik di bumi bisa kita konversi menjadi energi terbarukan metana. Klik tombol <strong class='text-emerald-300'>Sudah Paham!</strong> jika kamu siap meluncurkan roket!";
+        }
+
+        // If student has interacted 2 times or mentions completing, prompt completion
+        if (this.stepCount >= 2 && !reply.includes("Sudah Paham")) {
+          reply += "<br><span class='text-[10px] text-emerald-300 font-bold block mt-1.5'>Kapan pun kamu merasa siap, silakan klik tombol <strong>'Sudah Paham!'</strong> di bawah untuk membuka Kunci Ekspedisi! 🚀</span>";
+        }
+
+        await new Promise(r => setTimeout(r, 600));
+        document.getElementById(tempId)?.remove();
+
+        box.innerHTML += `
+          <div class="flex items-start gap-2 mb-2 max-w-[88%]">
+            <div class="w-6 h-6 rounded-full bg-emerald-900 shrink-0 flex items-center justify-center text-xs">🤖</div>
+            <div class="bg-slate-800 border border-emerald-500/30 text-emerald-100 text-xs px-3 py-2 rounded-2xl rounded-tl-none leading-relaxed">${reply}</div>
+          </div>`;
+        box.scrollTop = box.scrollHeight;
+        soundNarrator.speak(reply.replace(/<[^>]*>/g, ''));
+
+        this.typing = false;
+        inp.disabled = false;
+        inp.focus();
+      }
+
+      warakPaham() {
+        if (this.typing || this.passed) return;
+        this.stopChatTimer();
+        const box = document.getElementById('chat-warak-history');
+        box.innerHTML += `
+          <div class="flex items-end justify-end gap-1.5 mb-2 w-full">
+            <div class="bg-emerald-700 text-white text-xs px-3 py-2 rounded-2xl rounded-br-none max-w-[85%] font-semibold">Saya sudah sangat paham Warak! Tangki metana sudah siap.</div>
+          </div>`;
+        box.scrollTop = box.scrollHeight;
+        this.typing = true;
+        document.getElementById('chat-warak-input').disabled = true;
+        document.getElementById('chat-warak-options').classList.add('hidden');
+
+        setTimeout(() => {
+          box.innerHTML += `
+            <div class="flex items-start gap-2 mb-2 max-w-[88%]">
+              <div class="w-6 h-6 rounded-full bg-emerald-900 shrink-0 flex items-center justify-center text-xs">🤖</div>
+              <div class="bg-slate-800 border border-emerald-500/30 text-emerald-100 text-xs px-3 py-2 rounded-2xl rounded-tl-none">Luar biasa! Bahan bakar metana sudah terisi penuh 100%! Kunci Misi Ekspedisi resmi terbuka. Bersiaplah meluncur menuju antariksa, Kapten!</div>
+            </div>`;
+          box.scrollTop = box.scrollHeight;
+          this.passed = true;
+          this.typing = false;
+          soundNarrator.speak("Luar biasa! Bahan bakar metana sudah terisi penuh seratus persen! Kunci Misi Ekspedisi telah menyala. Bersiaplah meluncur, Kapten!");
+          setTimeout(() => gameEngine.closeChatAndUnlock(), 2500);
+        }, 600);
+      }
+
+      warakBelajarLagi() {
+        if (this.typing || this.passed) return;
+        const currQ = this.practiceQuestions[this.quizIndex % this.practiceQuestions.length];
+        this.quizIndex++;
+        const inp = document.getElementById('chat-warak-input');
+        if (inp) {
+          inp.value = currQ.q;
+          this.sendWarakMessage();
+        }
+      }
+    }
+    const geminiChat = new GeminiChat();
+  </script>
+
+  <script>
+    /* -----------------------------------------
+       6. GAME ENGINE (CORE LOGIC)
+    ----------------------------------------- */
+    class GameEngine {
+      constructor() {
+        this.portalProgress = { tujuan: false, materi: false, chat: false };
+        this.gameMode = 'solo';
+        this.players = {
+          p1: { name: 'Kadet 1', grade: 'Kelas 4 - Kombel A', score: 0, stars: 0, lives: 3, knockedOut: false },
+          p2: { name: 'Kadet 2', grade: 'Kelas 4 - Kombel B', score: 0, stars: 0, lives: 3, knockedOut: false }
+        };
+        this.currentRoundIndex = 0;
+        this.roundTimeLimit = 45;
+        this.remainingTime = 45;
+        this.timerInterval = null;
+        this.selectedLeft = null;
+        this.selectedRight = null;
+        this.vaultInput = '';
+        this.isChecking = false;
+        this.activeRounds = [];
+
+        // Buat soal awal yang teracak dan berbeda antara P1 dan P2
+        this.generateRounds();
+        this.updatePortalLocks();
+      }
+
+      generateRounds() {
+        const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+        // --- SEKTOR 1: BUMI ---
+        const bumiMatchP1Pool = [
+          { data: [{ id: 'b1', label: '3 kg Kertas', targetId: 'v1', matched: false }, { id: 'b2', label: '50 Ons Plastik', targetId: 'v2', matched: false }], targets: [{ id: 'v1', label: '3.000 g', pairId: 'b1', matched: false }, { id: 'v2', label: '5 kg', pairId: 'b2', matched: false }] },
+          { data: [{ id: 'b1', label: '2 kg Botol', targetId: 'v1', matched: false }, { id: 'b2', label: '40 Ons Kardus', targetId: 'v2', matched: false }], targets: [{ id: 'v1', label: '2.000 g', pairId: 'b1', matched: false }, { id: 'v2', label: '4 kg', pairId: 'b2', matched: false }] }
+        ];
+        const bumiMatchP2Pool = [
+          { data: [{ id: 'b3', label: '4 kg Kaleng', targetId: 'v3', matched: false }, { id: 'b4', label: '60 Ons Logam', targetId: 'v4', matched: false }], targets: [{ id: 'v3', label: '4.000 g', pairId: 'b3', matched: false }, { id: 'v4', label: '6 kg', pairId: 'b4', matched: false }] },
+          { data: [{ id: 'b3', label: '6 kg Baterai', targetId: 'v3', matched: false }, { id: 'b4', label: '80 Ons Residu', targetId: 'v4', matched: false }], targets: [{ id: 'v3', label: '6.000 g', pairId: 'b3', matched: false }, { id: 'v4', label: '8 kg', pairId: 'b4', matched: false }] }
+        ];
+
+        const bumiBalP1Pool = [
+          { targetKg: 2000, targetDisplay: '2 Ton', modules: [{ id: 'm1', label: 'Panel Surya', raw: '1.200 kg', kg: 1200, icon: '🔋', used: false }, { id: 'm2', label: 'Tangki Metana', raw: '800 kg', kg: 800, icon: '🛡️', used: false }, { id: 'm3', label: 'Reaktor Cadangan', raw: '1.100 kg', kg: 1100, icon: '📡', used: false }, { id: 'm4', label: 'Kamera Orbit', raw: '500 kg', kg: 500, icon: '📷', used: false }] },
+          { targetKg: 1800, targetDisplay: '1,8 Ton', modules: [{ id: 'm1', label: 'Baterai Litium', raw: '1.000 kg', kg: 1000, icon: '🔋', used: false }, { id: 'm2', label: 'Pelindung Sayap', raw: '800 kg', kg: 800, icon: '🛡️', used: false }, { id: 'm3', label: 'Radar Ruang', raw: '900 kg', kg: 900, icon: '📡', used: false }, { id: 'm4', label: 'Antena Mikro', raw: '400 kg', kg: 400, icon: '📷', used: false }] }
+        ];
+        const bumiBalP2Pool = [
+          { targetKg: 2400, targetDisplay: '2,4 Ton', modules: [{ id: 'm5', label: 'Generator Metana', raw: '1.500 kg', kg: 1500, icon: '⚡', used: false }, { id: 'm6', label: 'Bumper Asteroid', raw: '900 kg', kg: 900, icon: '🛡️', used: false }, { id: 'm7', label: 'Modul Kemudi', raw: '1.200 kg', kg: 1200, icon: '📡', used: false }, { id: 'm8', label: 'Sensor Optik', raw: '400 kg', kg: 400, icon: '📷', used: false }] },
+          { targetKg: 2200, targetDisplay: '2,2 Ton', modules: [{ id: 'm5', label: 'Kondensor Gas', raw: '1.400 kg', kg: 1400, icon: '⚡', used: false }, { id: 'm6', label: 'Penyaring Debu', raw: '800 kg', kg: 800, icon: '🛡️', used: false }, { id: 'm7', label: 'Komputer Nav', raw: '1.000 kg', kg: 1000, icon: '📡', used: false }, { id: 'm8', label: 'Suar Pandu', raw: '300 kg', kg: 300, icon: '📷', used: false }] }
+        ];
+
+        // Misi 3: Chisel Kristal dengan Variasi Cut Pengecoh (Hanya kombinasi tertentu yang tepat!)
+        const bumiChiselP1Pool = [
+          { limitGram: 4700, crystals: { c1: { name: 'Safir', current: 1800, initial: 1800, cut: 300, chiseled: false }, c2: { name: 'Rubi', current: 2000, initial: 2000, cut: 200, chiseled: false }, c3: { name: 'Zamrud', current: 1400, initial: 1400, cut: 250, chiseled: false } } }, // Awal 5200. Pangkas Safir(-300) & Rubi(-200) = 4700. Zamrud adalah pengecoh!
+          { limitGram: 4500, crystals: { c1: { name: 'Safir', current: 1900, initial: 1900, cut: 400, chiseled: false }, c2: { name: 'Rubi', current: 1700, initial: 1700, cut: 150, chiseled: false }, c3: { name: 'Zamrud', current: 1300, initial: 1300, cut: 200, chiseled: false } } }  // Awal 4900. Pangkas Safir(-400) = 4500. Sisanya pengecoh!
+        ];
+        const bumiChiselP2Pool = [
+          { limitGram: 5100, crystals: { c1: { name: 'Amethyst', current: 2100, initial: 2100, cut: 350, chiseled: false }, c2: { name: 'Topaz', current: 2000, initial: 2000, cut: 250, chiseled: false }, c3: { name: 'Kuarsa', current: 1600, initial: 1600, cut: 150, chiseled: false } } }, // Awal 5700. Pangkas Topaz(-250) & Amethyst(-350) = 5100.
+          { limitGram: 4900, crystals: { c1: { name: 'Amethyst', current: 1950, initial: 1950, cut: 200, chiseled: false }, c2: { name: 'Topaz', current: 1850, initial: 1850, cut: 300, chiseled: false }, c3: { name: 'Kuarsa', current: 1600, initial: 1600, cut: 400, chiseled: false } } }  // Awal 5400. Pangkas Kuarsa(-400) & Topaz(-300) = Salah jika Amethyst!
+        ];
+
+        // Mars Chisel dengan pengecoh
+        const marsChiselP1Pool = [
+          { limitGram: 7400, crystals: { c1: { name: 'Piroksen', current: 3200, initial: 3200, cut: 500, chiseled: false }, c2: { name: 'Hematit', current: 2800, initial: 2800, cut: 400, chiseled: false }, c3: { name: 'Basal', current: 2300, initial: 2300, cut: 600, chiseled: false } } }, // Awal 8300. Butuh dipotong 900g -> Piroksen(-500) + Hematit(-400) = 7400. Basal pengecoh!
+          { limitGram: 7600, crystals: { c1: { name: 'Piroksen', current: 3300, initial: 3300, cut: 450, chiseled: false }, c2: { name: 'Hematit', current: 2900, initial: 2900, cut: 350, chiseled: false }, c3: { name: 'Basal', current: 2200, initial: 2200, cut: 500, chiseled: false } } }  // Awal 8400. Butuh 800g -> Piroksen(-450) + Hematit(-350) = 7600.
+        ];
+        const marsChiselP2Pool = [
+          { limitGram: 7800, crystals: { c1: { name: 'Magnetit', current: 3400, initial: 3400, cut: 600, chiseled: false }, c2: { name: 'Vulkanik', current: 2900, initial: 2900, cut: 450, chiseled: false }, c3: { name: 'Silika', current: 2550, initial: 2550, cut: 450, chiseled: false } } }, // Awal 8850. Pangkas 1050g -> Magnetit(-600) + Vulkanik(-450) = 7800.
+          { limitGram: 7500, crystals: { c1: { name: 'Magnetit', current: 3300, initial: 3300, cut: 550, chiseled: false }, c2: { name: 'Vulkanik', current: 2800, initial: 2800, cut: 350, chiseled: false }, c3: { name: 'Silika', current: 2300, initial: 2300, cut: 400, chiseled: false } } }  // Awal 8400. Butuh potong 900g -> Magnetit(-550) + Vulkanik(-350) = 7500.
+        ];
+
+        // --- SEKTOR 2: MARS MATCH & BALANCE POOLS ---
+        const marsMatchP1Pool = [
+          { data: [{ id: 'm1', label: '4,5 kg Logam', targetId: 'v1', matched: false }, { id: 'm2', label: '75 Ons Oksigen', targetId: 'v2', matched: false }], targets: [{ id: 'v1', label: '4.500 g', pairId: 'm1', matched: false }, { id: 'v2', label: '7,5 kg', pairId: 'm2', matched: false }] },
+          { data: [{ id: 'm1', label: '3,5 kg Baterai', targetId: 'v1', matched: false }, { id: 'm2', label: '45 Ons Debu Mars', targetId: 'v2', matched: false }], targets: [{ id: 'v1', label: '3.500 g', pairId: 'm1', matched: false }, { id: 'v2', label: '4,5 kg', pairId: 'm2', matched: false }] }
+        ];
+        const marsMatchP2Pool = [
+          { data: [{ id: 'm3', label: '5,5 kg Kristal', targetId: 'v3', matched: false }, { id: 'm4', label: '65 Ons Metana', targetId: 'v4', matched: false }], targets: [{ id: 'v3', label: '5.500 g', pairId: 'm3', matched: false }, { id: 'v4', label: '6,5 kg', pairId: 'm4', matched: false }] },
+          { data: [{ id: 'm3', label: '2,5 kg Pelumas', targetId: 'v3', matched: false }, { id: 'm4', label: '85 Ons Residu', targetId: 'v4', matched: false }], targets: [{ id: 'v3', label: '2.500 g', pairId: 'm3', matched: false }, { id: 'v4', label: '8,5 kg', pairId: 'm4', matched: false }] }
+        ];
+
+        const marsBalP1Pool = [
+          { targetKg: 3500, targetDisplay: '3,5 Ton', modules: [{ id: 'mm1', label: 'Booster Jet', raw: '2.000 kg', kg: 2000, icon: '🔥', used: false }, { id: 'mm2', label: 'Perisai Termal', raw: '1.500 kg', kg: 1500, icon: '🛡️', used: false }, { id: 'mm3', label: 'Generator Laser', raw: '1.000 kg', kg: 1000, icon: '⚡', used: false }, { id: 'mm4', label: 'Sistem Ventilasi', raw: '500 kg', kg: 500, icon: '🌪️', used: false }] },
+          { targetKg: 3000, targetDisplay: '3 Ton', modules: [{ id: 'mm1', label: 'Booster Jet', raw: '1.800 kg', kg: 1800, icon: '🔥', used: false }, { id: 'mm2', label: 'Perisai Termal', raw: '1.200 kg', kg: 1200, icon: '🛡️', used: false }, { id: 'mm3', label: 'Panel Tenaga', raw: '900 kg', kg: 900, icon: '⚡', used: false }, { id: 'mm4', label: 'Kompresor Udara', raw: '600 kg', kg: 600, icon: '🌪️', used: false }] }
+        ];
+        const marsBalP2Pool = [
+          { targetKg: 3200, targetDisplay: '3,2 Ton', modules: [{ id: 'mm5', label: 'Turbin Plasma', raw: '2.000 kg', kg: 2000, icon: '⚡', used: false }, { id: 'mm6', label: 'Peredam Panas', raw: '1.200 kg', kg: 1200, icon: '🛡️', used: false }, { id: 'mm7', label: 'Stabilizer Roket', raw: '1.100 kg', kg: 1100, icon: '🔥', used: false }, { id: 'mm8', label: 'Kapsul Sampel', raw: '400 kg', kg: 400, icon: '📷', used: false }] },
+          { targetKg: 2800, targetDisplay: '2,8 Ton', modules: [{ id: 'mm5', label: 'Turbin Plasma', raw: '1.600 kg', kg: 1600, icon: '⚡', used: false }, { id: 'mm6', label: 'Peredam Panas', raw: '1.200 kg', kg: 1200, icon: '🛡️', used: false }, { id: 'mm7', label: 'Stabilizer Roket', raw: '800 kg', kg: 800, icon: '🔥', used: false }, { id: 'mm8', label: 'Kapsul Sampel', raw: '500 kg', kg: 500, icon: '📷', used: false }] }
+        ];
+
+        // --- SEKTOR 3: VENUS MATCH, BALANCE, & CHISEL POOLS ---
+        const venusMatchP1Pool = [
+          { data: [{ id: 'v1', label: '6,25 kg Gas', targetId: 'vt1', matched: false }, { id: 'v2', label: '14 Kuintal', targetId: 'vt2', matched: false }], targets: [{ id: 'vt1', label: '6.250 g', pairId: 'v1', matched: false }, { id: 'vt2', label: '1.400 kg', pairId: 'v2', matched: false }] },
+          { data: [{ id: 'v1', label: '5,25 kg Asam', targetId: 'vt1', matched: false }, { id: 'v2', label: '12 Kuintal', targetId: 'vt2', matched: false }], targets: [{ id: 'vt1', label: '5.250 g', pairId: 'v1', matched: false }, { id: 'vt2', label: '1.200 kg', pairId: 'v2', matched: false }] }
+        ];
+        const venusMatchP2Pool = [
+          { data: [{ id: 'v3', label: '7,25 kg Sulfur', targetId: 'vt3', matched: false }, { id: 'v4', label: '16 Kuintal', targetId: 'vt4', matched: false }], targets: [{ id: 'vt3', label: '7.250 g', pairId: 'v3', matched: false }, { id: 'vt4', label: '1.600 kg', pairId: 'v4', matched: false }] },
+          { data: [{ id: 'v3', label: '4,75 kg Sulfur', targetId: 'vt3', matched: false }, { id: 'v4', label: '18 Kuintal', targetId: 'vt4', matched: false }], targets: [{ id: 'vt3', label: '4.750 g', pairId: 'v3', matched: false }, { id: 'vt4', label: '1.800 kg', pairId: 'v4', matched: false }] }
+        ];
+
+        const venusBalP1Pool = [
+          { targetKg: 4800, targetDisplay: '4,8 Ton', modules: [{ id: 'vm1', label: 'Perisai Baja A', raw: '2.500 kg', kg: 2500, icon: '🛡️', used: false }, { id: 'vm2', label: 'Pelapis Titanium', raw: '2.300 kg', kg: 2300, icon: '❄️', used: false }, { id: 'vm3', label: 'Peredam Radiasi', raw: '1.500 kg', kg: 1500, icon: '🌀', used: false }, { id: 'vm4', label: 'Jangkar Gravitasi', raw: '1.000 kg', kg: 1000, icon: '🧲', used: false }] },
+          { targetKg: 4500, targetDisplay: '4,5 Ton', modules: [{ id: 'vm1', label: 'Perisai Baja A', raw: '2.500 kg', kg: 2500, icon: '🛡️', used: false }, { id: 'vm2', label: 'Pelapis Titanium', raw: '2.000 kg', kg: 2000, icon: '❄️', used: false }, { id: 'vm3', label: 'Peredam Radiasi', raw: '1.200 kg', kg: 1200, icon: '🌀', used: false }, { id: 'vm4', label: 'Jangkar Gravitasi', raw: '800 kg', kg: 800, icon: '🧲', used: false }] }
+        ];
+        const venusBalP2Pool = [
+          { targetKg: 4200, targetDisplay: '4,2 Ton', modules: [{ id: 'vm5', label: 'Dinding Pelindung', raw: '2.400 kg', kg: 2400, icon: '🛡️', used: false }, { id: 'vm6', label: 'Penyerap Kaldera', raw: '1.800 kg', kg: 1800, icon: '❄️', used: false }, { id: 'vm7', label: 'Katup Pengurang', raw: '1.200 kg', kg: 1200, icon: '🌀', used: false }, { id: 'vm8', label: 'Magnetik Stabilizer', raw: '600 kg', kg: 600, icon: '🧲', used: false }] },
+          { targetKg: 4600, targetDisplay: '4,6 Ton', modules: [{ id: 'vm5', label: 'Dinding Pelindung', raw: '2.600 kg', kg: 2600, icon: '🛡️', used: false }, { id: 'vm6', label: 'Penyerap Kaldera', raw: '2.000 kg', kg: 2000, icon: '❄️', used: false }, { id: 'vm7', label: 'Katup Pengurang', raw: '1.000 kg', kg: 1000, icon: '🌀', used: false }, { id: 'vm8', label: 'Magnetik Stabilizer', raw: '500 kg', kg: 500, icon: '🧲', used: false }] }
+        ];
+
+        const venusChiselP1Pool = [
+          { limitGram: 9400, crystals: { c1: { name: 'Sulfida', current: 4200, initial: 4200, cut: 500, chiseled: false }, c2: { name: 'Piroksen', current: 3600, initial: 3600, cut: 400, chiseled: false }, c3: { name: 'Obsidian', current: 2500, initial: 2500, cut: 300, chiseled: false } } },
+          { limitGram: 9200, crystals: { c1: { name: 'Sulfida', current: 4100, initial: 4100, cut: 450, chiseled: false }, c2: { name: 'Piroksen', current: 3500, initial: 3500, cut: 350, chiseled: false }, c3: { name: 'Obsidian', current: 2400, initial: 2400, cut: 300, chiseled: false } } }
+        ];
+        const venusChiselP2Pool = [
+          { limitGram: 9600, crystals: { c1: { name: 'Basal Hitam', current: 4300, initial: 4300, cut: 500, chiseled: false }, c2: { name: 'Magma Keras', current: 3700, initial: 3700, cut: 400, chiseled: false }, c3: { name: 'Silikat Venus', current: 2500, initial: 2500, cut: 350, chiseled: false } } },
+          { limitGram: 9100, crystals: { c1: { name: 'Basal Hitam', current: 4000, initial: 4000, cut: 400, chiseled: false }, c2: { name: 'Magma Keras', current: 3600, initial: 3600, cut: 500, chiseled: false }, c3: { name: 'Silikat Venus', current: 2400, initial: 2400, cut: 300, chiseled: false } } }
+        ];
+
+        // MISI 4: BRANKAS BUMI (P1: Pengurangan Kuintal vs P2: Penjumlahan Puluhan kg)
+        const bumiVaultP1Pool = [
+          { 
+            questionHtml: '📦 <strong>Kargo Kertas Daur Ulang P1:</strong><br/>Kadet 1 mengangkut kertas bekas seberat <strong>1 kuintal (100 kg)</strong>.<br/>Telah dimasukkan ke mesin pengolah metana sebanyak <strong>60 kg</strong>.<br/>👉 Berapa <strong>kg</strong> sisa kertas untuk sandi brankas P1?', 
+            hint: '1 kuintal = 100 kg. Hitung: 100 - 60 = ?', 
+            answer: '40' 
+          },
+          { 
+            questionHtml: '📦 <strong>Kargo Kardus Logistik P1:</strong><br/>Kadet 1 menyiapkan tumpukan kardus seberat <strong>1 kuintal (100 kg)</strong>.<br/>Telah dipasang sebagai isolator roket sebanyak <strong>70 kg</strong>.<br/>👉 Berapa <strong>kg</strong> sisa kardus untuk sandi brankas P1?', 
+            hint: '1 kuintal = 100 kg. Hitung: 100 - 70 = ?', 
+            answer: '30' 
+          }
+        ];
+        const bumiVaultP2Pool = [
+          { 
+            questionHtml: '🥤 <strong>Kargo Botol & Kaleng P2:</strong><br/>Kadet 2 mengumpulkan botol plastik seberat <strong>30 kg</strong>.<br/>Lalu kru hanggar menambahkan kaleng daur ulang seberat <strong>25 kg</strong>.<br/>👉 Berapa <strong>kg</strong> TOTAL berat sampah untuk sandi brankas P2?', 
+            hint: 'Hitung penjumlahan: 30 + 25 = ?', 
+            answer: '55' 
+          },
+          { 
+            questionHtml: '🥤 <strong>Kargo Plastik & Logam P2:</strong><br/>Kadet 2 mengumpulkan botol plastik seberat <strong>40 kg</strong>.<br/>Lalu kru hanggar menambahkan kargo logam daur ulang seberat <strong>25 kg</strong>.<br/>👉 Berapa <strong>kg</strong> TOTAL berat kargo untuk sandi brankas P2?', 
+            hint: 'Hitung penjumlahan: 40 + 25 = ?', 
+            answer: '65' 
+          }
+        ];
+
+        // MISI 8: BRANKAS MARS (P1: Pengurangan Es 500 kg vs P2: Penjumlahan Batuan Kuintal)
+        const marsVaultP1Pool = [
+          { 
+            questionHtml: '🧊 <strong>Tangki Es Kutub Mars P1:</strong><br/>Kadet 1 memuat es beku kutub Mars seberat <strong>500 kg</strong>.<br/>Sebanyak <strong>200 kg</strong> dicairkan untuk pendingin reaktor roket.<br/>👉 Berapa <strong>kg</strong> sisa es kutub untuk sandi brankas P1?', 
+            hint: 'Hitung pengurangan: 500 - 200 = ?', 
+            answer: '300' 
+          },
+          { 
+            questionHtml: '🧊 <strong>Bongkahan Es Metana Mars P1:</strong><br/>Kadet 1 memuat es metana Mars seberat <strong>600 kg</strong>.<br/>Sebanyak <strong>250 kg</strong> dipanaskan menjadi gas pendorong roket.<br/>👉 Berapa <strong>kg</strong> sisa es metana untuk sandi brankas P1?', 
+            hint: 'Hitung pengurangan: 600 - 250 = ?', 
+            answer: '350' 
+          }
+        ];
+        const marsVaultP2Pool = [
+          { 
+            questionHtml: '🪨 <strong>Kargo Batuan Meteorit Mars P2:</strong><br/>Kadet 2 memuat batuan meteor Mars seberat <strong>2 kuintal (200 kg)</strong>.<br/>Lalu kru menambahkan sampel pasir besi seberat <strong>80 kg</strong>.<br/>👉 Berapa <strong>kg</strong> TOTAL muatan mineral Mars untuk sandi brankas P2?', 
+            hint: '2 kuintal = 200 kg. Hitung: 200 + 80 = ?', 
+            answer: '280' 
+          },
+          { 
+            questionHtml: '🪨 <strong>Kargo Mineral Vulkanik Mars P2:</strong><br/>Kadet 2 memuat mineral Mars seberat <strong>3 kuintal (300 kg)</strong>.<br/>Lalu kru menambahkan serbuk magnetik seberat <strong>90 kg</strong>.<br/>👉 Berapa <strong>kg</strong> TOTAL berat mineral untuk sandi brankas P2?', 
+            hint: '3 kuintal = 300 kg. Hitung: 300 + 90 = ?', 
+            answer: '390' 
+          }
+        ];
+
+        // MISI 12: BRANKAS VENUS (P1: Pengurangan Gas Asam vs P2: Penjumlahan Perisai Kuintal)
+        const venusVaultP1Pool = [
+          { 
+            questionHtml: '🧪 <strong>Tabung Gas Asam Venus P1:</strong><br/>Kadet 1 menampung gas asam pekat seberat <strong>400 kg</strong>.<br/>Sebanyak <strong>150 kg</strong> berhasil dinetralkan oleh filter roket.<br/>👉 Berapa <strong>kg</strong> sisa gas asam untuk sandi akhir P1?', 
+            hint: 'Hitung pengurangan: 400 - 150 = ?', 
+            answer: '250' 
+          },
+          { 
+            questionHtml: '🧪 <strong>Cairan Reaktor Atmosfer P1:</strong><br/>Kadet 1 menampung cairan reaktor seberat <strong>500 kg</strong>.<br/>Sebanyak <strong>300 kg</strong> telah disalurkan ke mesin pendorong roket.<br/>👉 Berapa <strong>kg</strong> sisa cairan reaktor untuk sandi akhir P1?', 
+            hint: 'Hitung pengurangan: 500 - 300 = ?', 
+            answer: '200' 
+          }
+        ];
+        const venusVaultP2Pool = [
+          { 
+            questionHtml: '🛡️ <strong>Pelat Perisai Baja Venus P2:</strong><br/>Kadet 2 memasang perisai utama seberat <strong>1 kuintal (100 kg)</strong>.<br/>Lalu dipasang kaca pelindung kaldera seberat <strong>65 kg</strong>.<br/>👉 Berapa <strong>kg</strong> TOTAL berat perisai untuk sandi akhir P2?', 
+            hint: '1 kuintal = 100 kg. Hitung: 100 + 65 = ?', 
+            answer: '165' 
+          },
+          { 
+            questionHtml: '🛡️ <strong>Dinding Titanium Kaldera Venus P2:</strong><br/>Kadet 2 memasang dinding titanium seberat <strong>1 kuintal (100 kg)</strong>.<br/>Lalu dipasang lapisan penahan asam seberat <strong>75 kg</strong>.<br/>👉 Berapa <strong>kg</strong> TOTAL berat dinding untuk sandi akhir P2?', 
+            hint: '1 kuintal = 100 kg. Hitung: 100 + 75 = ?', 
+            answer: '175' 
+          }
+        ];
+
+        // Ambil variasi acak yang memastikan P1 dan P2 mendapatkan soal berlainan
+        const bM1 = pickRandom(bumiMatchP1Pool);
+        const bM2 = pickRandom(bumiMatchP2Pool);
+        const bB1 = pickRandom(bumiBalP1Pool);
+        const bB2 = pickRandom(bumiBalP2Pool);
+        const bC1 = pickRandom(bumiChiselP1Pool);
+        const bC2 = pickRandom(bumiChiselP2Pool);
+        const bV1 = pickRandom(bumiVaultP1Pool);
+        const bV2 = pickRandom(bumiVaultP2Pool);
+
+        const mM1 = pickRandom(marsMatchP1Pool);
+        const mM2 = pickRandom(marsMatchP2Pool);
+        const mB1 = pickRandom(marsBalP1Pool);
+        const mB2 = pickRandom(marsBalP2Pool);
+        const mC1 = pickRandom(marsChiselP1Pool);
+        const mC2 = pickRandom(marsChiselP2Pool);
+        const mV1 = pickRandom(marsVaultP1Pool);
+        const mV2 = pickRandom(marsVaultP2Pool);
+
+        const vM1 = pickRandom(venusMatchP1Pool);
+        const vM2 = pickRandom(venusMatchP2Pool);
+        const vB1 = pickRandom(venusBalP1Pool);
+        const vB2 = pickRandom(venusBalP2Pool);
+        const vC1 = pickRandom(venusChiselP1Pool);
+        const vC2 = pickRandom(venusChiselP2Pool);
+        const vV1 = pickRandom(venusVaultP1Pool);
+        const vV2 = pickRandom(venusVaultP2Pool);
+
+        this.rounds = [
+          // Sektor 1: Bumi (1-8)
+          { roundNumber: 1, planet: 'Bumi', playerId: 'p1', type: 'match', title: 'Misi 1: Kargo Kadet 1', voiceDesc: 'Pasangkan logistik yang setara.', ...bM1 },
+          { roundNumber: 2, planet: 'Bumi', playerId: 'p2', type: 'match', title: 'Misi 1: Kargo Kadet 2', voiceDesc: 'Giliran Kadet 2, pasangkan kargo berlainan.', ...bM2 },
+          { roundNumber: 3, planet: 'Bumi', playerId: 'p1', type: 'balance', title: 'Misi 2: Sayap Kadet 1', voiceDesc: 'Pilih modul hingga tepat.', ...bB1 },
+          { roundNumber: 4, planet: 'Bumi', playerId: 'p2', type: 'balance', title: 'Misi 2: Sayap Kadet 2', voiceDesc: 'Kadet 2, seimbangkan modul sayapmu.', ...bB2 },
+          { roundNumber: 5, planet: 'Bumi', playerId: 'p1', type: 'chisel', title: 'Misi 3: Kristal Kadet 1', voiceDesc: 'Hitung dan pangkas kristal yang tepat. Awas kristal pengecoh!', ...bC1 },
+          { roundNumber: 6, planet: 'Bumi', playerId: 'p2', type: 'chisel', title: 'Misi 3: Kristal Kadet 2', voiceDesc: 'Kadet 2, pilih kristal yang harus dipangkas agar tepat!', ...bC2 },
+          { roundNumber: 7, planet: 'Bumi', playerId: 'p1', type: 'vault', title: 'Misi 4: Brankas Kadet 1', voiceDesc: 'Kadet 1, pecahkan sandi brankas pengurangan kuintalmu.', ...bV1 },
+          { roundNumber: 8, planet: 'Bumi', playerId: 'p2', type: 'vault', title: 'Misi 4: Brankas Kadet 2', voiceDesc: 'Kadet 2, soalmu berbeda! Hitung penjumlahan kargo daur ulangmu!', ...bV2 },
+
+          // Sektor 2: Mars (9-16)
+          { roundNumber: 9, planet: 'Mars', playerId: 'p1', type: 'match', title: 'Misi 5: Reaktor Kadet 1', voiceDesc: 'Cocokkan desimal dan gram.', ...mM1 },
+          { roundNumber: 10, planet: 'Mars', playerId: 'p2', type: 'match', title: 'Misi 5: Reaktor Kadet 2', voiceDesc: 'Kadet 2, pasangkan reaktor Mars berlainan.', ...mM2 },
+          { roundNumber: 11, planet: 'Mars', playerId: 'p1', type: 'balance', title: 'Misi 6: Pendarat Kadet 1', voiceDesc: 'Seimbangkan roket pendarat.', ...mB1 },
+          { roundNumber: 12, planet: 'Mars', playerId: 'p2', type: 'balance', title: 'Misi 6: Pendarat Kadet 2', voiceDesc: 'Kadet 2, seimbangkan modul pendaratmu.', ...mB2 },
+          { roundNumber: 13, planet: 'Mars', playerId: 'p1', type: 'chisel', title: 'Misi 7: Magma Kadet 1', voiceDesc: 'Pangkas batuan magma Mars yang tepat.', ...mC1 },
+          { roundNumber: 14, planet: 'Mars', playerId: 'p2', type: 'chisel', title: 'Misi 7: Magma Kadet 2', voiceDesc: 'Kadet 2, awas batuan pengecoh, pangkas hingga pas!', ...mC2 },
+          { roundNumber: 15, planet: 'Mars', playerId: 'p1', type: 'vault', title: 'Misi 8: Sandi Inti Kadet 1', voiceDesc: 'Kadet 1, hitung sisa es kutub Mars dari lima ratus kilogram!', ...mV1 },
+          { roundNumber: 16, planet: 'Mars', playerId: 'p2', type: 'vault', title: 'Misi 8: Sandi Inti Kadet 2', voiceDesc: 'Kadet 2, soalmu berbeda! Hitung total muatan batuan meteor kuintal!', ...mV2 },
+
+          // Sektor 3: Venus (17-24)
+          { roundNumber: 17, planet: 'Venus', playerId: 'p1', type: 'match', title: 'Misi 9: Venus Kadet 1', voiceDesc: 'Pasangkan konversi kuintal dan gram.', ...vM1 },
+          { roundNumber: 18, planet: 'Venus', playerId: 'p2', type: 'match', title: 'Misi 9: Venus Kadet 2', voiceDesc: 'Kadet 2, pasangkan konversi Venus berlainan.', ...vM2 },
+          { roundNumber: 19, planet: 'Venus', playerId: 'p1', type: 'balance', title: 'Misi 10: Perisai Kadet 1', voiceDesc: 'Seimbangkan perisai atmosfer.', ...vB1 },
+          { roundNumber: 20, planet: 'Venus', playerId: 'p2', type: 'balance', title: 'Misi 10: Perisai Kadet 2', voiceDesc: 'Kadet 2, seimbangkan perisai atmosfermu.', ...vB2 },
+          { roundNumber: 21, planet: 'Venus', playerId: 'p1', type: 'chisel', title: 'Misi 11: Obsidian Kadet 1', voiceDesc: 'Pangkas obsidian Venus dengan cermat!', ...vC1 },
+          { roundNumber: 22, planet: 'Venus', playerId: 'p2', type: 'chisel', title: 'Misi 11: Obsidian Kadet 2', voiceDesc: 'Kadet 2, pangkas obsidian dengan benar tanpa terjebak pengecoh!', ...vC2 },
+          { roundNumber: 23, planet: 'Venus', playerId: 'p1', type: 'vault', title: 'Misi 12: Kunci Akhir Kadet 1', voiceDesc: 'Ujian Kunci Terakhir Kadet 1, hitung pengurangan gas asam baterai!', ...vV1 },
+          { roundNumber: 24, planet: 'Venus', playerId: 'p2', type: 'vault', title: 'Misi 12: Kunci Akhir Kadet 2', voiceDesc: 'Ujian Kunci Terakhir Kadet 2, soalmu berbeda! Hitung total perisai baja!', ...vV2 }
+        ];
+      }
+
+      updatePortalLocks() {
+        const bMat = document.getElementById('btn-menu-materi');
+        const bCh = document.getElementById('btn-menu-chat');
+        const bEks = document.getElementById('btn-menu-ekspedisi');
+        if (!bMat || !bCh || !bEks) return;
+
+        if (this.portalProgress.tujuan) {
+          bMat.classList.remove('opacity-50', 'grayscale');
+          document.getElementById('icon-materi').classList.remove('hidden');
+          document.getElementById('lock-materi').classList.add('hidden');
+          document.getElementById('desc-materi').textContent = 'Pahami tangga konversi.';
+          document.getElementById('desc-materi').classList.replace('text-slate-400', 'text-slate-200');
+          bMat.classList.add('pulse-card');
+        }
+        if (this.portalProgress.materi) {
+          bCh.classList.remove('opacity-50', 'grayscale');
+          document.getElementById('icon-chat').classList.remove('hidden');
+          document.getElementById('lock-chat').classList.add('hidden');
+          document.getElementById('desc-chat').textContent = 'Diskusi bahan bakar AI.';
+          document.getElementById('desc-chat').classList.replace('text-slate-400', 'text-slate-200');
+          bCh.classList.add('pulse-card');
+        }
+        if (this.portalProgress.chat) {
+          bEks.classList.remove('opacity-50', 'grayscale');
+          document.getElementById('icon-ekspedisi').classList.remove('hidden');
+          document.getElementById('lock-ekspedisi').classList.add('hidden');
+          document.getElementById('desc-ekspedisi').textContent = 'Solo atau Duel Siap!';
+          document.getElementById('desc-ekspedisi').classList.replace('text-slate-400', 'text-slate-200');
+          bEks.classList.add('pulse-card');
+        }
+      }
+
+      toggleLearningModal(show) {
+        soundFx.click();
+        const m = document.getElementById('modal-tujuan');
+        if (m) m.classList.toggle('hidden', !show);
+        if (show) {
+          this.portalProgress.tujuan = true;
+          this.updatePortalLocks();
+          soundNarrator.speak('Tujuan Pembelajaran Fase B dan C, kelas 3 sampai 6 Sekolah Dasar.');
+        }
+      }
+
+      toggleGuideModal(show) {
+        if (show && !this.portalProgress.tujuan) {
+          soundFx.boom();
+          soundNarrator.speak('Baca Tujuan Belajar terlebih dahulu!');
+          return;
+        }
+        soundFx.click();
+        const m = document.getElementById('modal-materi');
+        if (m) m.classList.toggle('hidden', !show);
+        if (show) {
+          this.portalProgress.materi = true;
+          this.updatePortalLocks();
+          soundNarrator.speak('Materi Tangga Konversi Satuan Berat.');
+        }
+      }
+
+      openChat() {
+        if (!this.portalProgress.materi) {
+          soundFx.boom();
+          soundNarrator.speak('Pahami Materi Satuan terlebih dahulu!');
+          return;
+        }
+        soundFx.click();
+        document.getElementById('modal-chat').classList.remove('hidden');
+        geminiChat.init();
+      }
+
+      closeChatModal() {
+        soundFx.click();
+        geminiChat.stopChatTimer();
+        document.getElementById('modal-chat').classList.add('hidden');
+      }
+
+      closeChatAndUnlock() {
+        geminiChat.stopChatTimer();
+        this.closeChatModal();
+        this.portalProgress.chat = true;
+        this.updatePortalLocks();
+        soundFx.meriah();
+      }
+
+      openEkspedisi() {
+        if (!this.portalProgress.chat) {
+          soundFx.boom();
+          soundNarrator.speak('Selesaikan diskusi dengan Warak AI terlebih dahulu!');
+          return;
+        }
+        soundFx.click();
+        document.getElementById('modal-mode').classList.remove('hidden');
+      }
+
+      toggleModeModal(show) {
+        soundFx.click();
+        document.getElementById('modal-mode').classList.toggle('hidden', !show);
+      }
+
+      selectSoloMode() {
+        this.gameMode = 'solo';
+        this.toggleModeModal(false);
+        document.getElementById('p1-name').value = 'Kadet Solo';
+        document.getElementById('p2-name').value = 'Robot AI';
+        this.toRegistration();
+        soundNarrator.speak('Mode Latihan Mandiri dipilih.');
+      }
+
+      selectDuelMode() {
+        this.gameMode = 'duel';
+        this.toggleModeModal(false);
+        document.getElementById('p1-name').value = 'Kadet 1';
+        document.getElementById('p2-name').value = 'Kadet 2';
+        this.toRegistration();
+        soundNarrator.speak('Mode Duel Dua Pemain dipilih.');
+      }
+
+      toRegistration() {
+        ['screen-home-portal', 'screen-arena', 'screen-transit-mars', 'screen-transit-venus', 'screen-victory'].forEach(id => {
+          document.getElementById(id)?.classList.add('hidden');
+        });
+        document.getElementById('screen-register')?.classList.remove('hidden');
+
+        if (this.gameMode === 'solo') {
+          document.getElementById('p2-reg-card')?.classList.add('hidden');
+          document.getElementById('reg-vs-badge')?.classList.add('hidden');
+          document.getElementById('reg-p2-badge')?.classList.add('hidden');
+          document.getElementById('reg-grid-container')?.classList.remove('sm:grid-cols-2');
+        } else {
+          document.getElementById('p2-reg-card')?.classList.remove('hidden');
+          document.getElementById('reg-vs-badge')?.classList.remove('hidden');
+          document.getElementById('reg-p2-badge')?.classList.remove('hidden');
+          document.getElementById('reg-grid-container')?.classList.add('sm:grid-cols-2');
+        }
+      }
+
+      backToHomePortal() {
+        this.stopTimer();
+        soundFx.click();
+        ['screen-register', 'screen-arena', 'screen-transit-mars', 'screen-transit-venus', 'screen-victory', 'duel-scoreboard-header'].forEach(id => {
+          document.getElementById(id)?.classList.add('hidden');
+        });
+        document.getElementById('screen-home-portal')?.classList.remove('hidden');
+      }
+
+      resetAllRounds() {
+        this.rounds.forEach(r => {
+          if (r.data) r.data.forEach(d => d.matched = false);
+          if (r.targets) r.targets.forEach(t => t.matched = false);
+          if (r.modules) r.modules.forEach(m => m.used = false);
+          if (r.crystals) Object.keys(r.crystals).forEach(k => {
+            r.crystals[k].current = r.crystals[k].initial;
+            r.crystals[k].chiseled = false;
+          });
+        });
+        this.selectedLeft = null;
+        this.selectedRight = null;
+        this.vaultInput = '';
+        this.isChecking = false;
+        document.getElementById('timeout-alert-banner')?.classList.add('hidden');
+      }
+
+      startDuelGame(e) {
+        if (e) e.preventDefault();
+
+        // Pastikan deteksi duel aktif jika kartu Kadet 2 tampil di formulir
+        const p2Card = document.getElementById('p2-reg-card');
+        if (p2Card && !p2Card.classList.contains('hidden')) {
+          this.gameMode = 'duel';
+        }
+
+        // Generate soal acak baru setiap peluncuran roket agar variatif
+        this.generateRounds();
+
+        this.players.p1.name = document.getElementById('p1-name').value || 'Kadet 1';
+        this.players.p1.grade = `${document.getElementById('p1-grade').value} - ${document.getElementById('p1-section').value}`;
+        this.players.p2.name = document.getElementById('p2-name').value || 'Kadet 2';
+        this.players.p2.grade = `${document.getElementById('p2-grade').value} - ${document.getElementById('p2-section').value}`;
+
+        this.activeRounds = this.gameMode === 'solo' 
+          ? this.rounds.filter(r => r.playerId === 'p1') 
+          : this.rounds;
+
+        ['p1', 'p2'].forEach(p => {
+          this.players[p].score = 0;
+          this.players[p].stars = 0;
+          this.players[p].lives = 3;
+          this.players[p].knockedOut = false;
+        });
+        this.currentRoundIndex = 0;
+        this.resetAllRounds();
+
+        document.getElementById('screen-register')?.classList.add('hidden');
+        document.getElementById('screen-arena')?.classList.remove('hidden');
+        document.getElementById('duel-scoreboard-header')?.classList.remove('hidden');
+
+        if (this.gameMode === 'solo') {
+          document.getElementById('p2-header-badge')?.classList.add('hidden');
+          document.getElementById('scoreboard-vs')?.classList.add('hidden');
+        } else {
+          document.getElementById('p2-header-badge')?.classList.remove('hidden');
+          document.getElementById('scoreboard-vs')?.classList.remove('hidden');
+        }
+
+        this.updateHeaderScoreboard();
+        this.loadCurrentRound();
+        soundFx.meriah();
+      }
+
+      getHeartDisplay(n) {
+        const count = Math.max(0, n);
+        return '❤️'.repeat(count) + '🖤'.repeat(Math.max(0, 3 - count));
+      }
+
+      getCurrentPlayer() {
+        const round = this.activeRounds[this.currentRoundIndex];
+        return this.players[round?.playerId || 'p1'];
+      }
+
+      updateHeaderScoreboard() {
+        const p1 = this.players.p1;
+        const p2 = this.players.p2;
+        const round = this.activeRounds[this.currentRoundIndex];
+        const activePid = round?.playerId || 'p1';
+
+        document.getElementById('p1-header-name').textContent = p1.name;
+        document.getElementById('p1-header-score').textContent = p1.score;
+        document.getElementById('p1-header-stars').textContent = p1.stars;
+        document.getElementById('p1-header-lives').textContent = this.getHeartDisplay(p1.lives);
+
+        document.getElementById('p2-header-name').textContent = p2.name;
+        document.getElementById('p2-header-score').textContent = p2.score;
+        document.getElementById('p2-header-stars').textContent = p2.stars;
+        document.getElementById('p2-header-lives').textContent = this.getHeartDisplay(p2.lives);
+
+        const b1 = document.getElementById('p1-header-badge');
+        const b2 = document.getElementById('p2-header-badge');
+        if (this.gameMode === 'solo') {
+          b1.className = 'flex items-center gap-1.5 bg-sky-950/90 border border-cyan-400 px-2 py-0.5 sm:py-1 rounded-xl shadow-md text-xs';
+        } else {
+          if (activePid === 'p1') {
+            b1.className = 'flex items-center gap-1.5 bg-sky-950/90 border-2 border-cyan-400 px-2 py-0.5 sm:py-1 rounded-xl shadow-lg active-turn-p1 text-xs';
+            b2.className = 'flex items-center gap-1.5 bg-slate-900/60 border border-orange-500/30 opacity-60 px-2 py-0.5 sm:py-1 rounded-xl text-xs';
+          } else {
+            b1.className = 'flex items-center gap-1.5 bg-slate-900/60 border border-cyan-500/30 opacity-60 px-2 py-0.5 sm:py-1 rounded-xl text-xs';
+            b2.className = 'flex items-center gap-1.5 bg-orange-950/90 border-2 border-orange-400 px-2 py-0.5 sm:py-1 rounded-xl shadow-lg active-turn-p2 text-xs';
+          }
+        }
+      }
+
+      startTimer() {
+        this.stopTimer();
+        const r = this.activeRounds[this.currentRoundIndex];
+        this.roundTimeLimit = r?.type === 'vault' ? 60 : 45;
+        this.remainingTime = this.roundTimeLimit;
+        this.updateTimerDisplay();
+
+        this.timerInterval = setInterval(() => {
+          this.remainingTime--;
+          this.updateTimerDisplay();
+          if (this.remainingTime === 10) {
+            soundFx.click();
+            soundNarrator.speak('Waktu sisa sepuluh detik!');
+          }
+          if (this.remainingTime <= 0) {
+            this.handleTimeout();
+          }
+        }, 1000);
+      }
+
+      stopTimer() {
+        if (this.timerInterval) {
+          clearInterval(this.timerInterval);
+          this.timerInterval = null;
+        }
+      }
+
+      updateTimerDisplay() {
+        const t = document.getElementById('turn-timer-digits');
+        const b = document.getElementById('turn-timer-bar');
+        if (!t || !b) return;
+        t.textContent = `${this.remainingTime}s`;
+        b.style.width = `${Math.max(0, (this.remainingTime / this.roundTimeLimit) * 100)}%`;
+
+        if (this.remainingTime > 20) {
+          t.className = 'heading-font text-xs sm:text-sm font-black text-emerald-400 min-w-[32px] text-right';
+        } else if (this.remainingTime > 10) {
+          t.className = 'heading-font text-xs sm:text-sm font-black text-amber-300 min-w-[32px] text-right';
+        } else {
+          t.className = 'heading-font text-xs sm:text-sm font-black text-rose-500 min-w-[32px] text-right animate-pulse';
+        }
+      }
+
+      handleTimeout() {
+        this.stopTimer();
+        const cur = this.getCurrentPlayer();
+        cur.lives--;
+        this.updateHeaderScoreboard();
+        soundFx.boom();
+
+        const ban = document.getElementById('timeout-alert-banner');
+        document.getElementById('timeout-alert-title').textContent = cur.lives <= 0 ? 'GAME OVER!' : 'WAKTU HABIS!';
+        document.getElementById('timeout-alert-desc').textContent = cur.lives <= 0 ? 'Kadet kehabisan nyawa!' : 'Kadet kehilangan 1 nyawa. Ulangi babak ini!';
+        ban.classList.remove('hidden');
+
+        if (cur.lives <= 0) {
+          cur.knockedOut = true;
+          setTimeout(() => this.showVictoryScreen(), 2500);
+        }
+      }
+
+      dismissTimeoutAlert() {
+        document.getElementById('timeout-alert-banner')?.classList.add('hidden');
+        if (this.getCurrentPlayer().lives <= 0) return this.showVictoryScreen();
+        this.resetAllRounds();
+        this.loadCurrentRound();
+      }
+
+      shuffleTarget(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+      }
+
+      loadCurrentRound() {
+        if (this.currentRoundIndex >= this.activeRounds.length) return this.showVictoryScreen();
+        const r = this.activeRounds[this.currentRoundIndex];
+        const cur = this.players[r.playerId];
+        this.selectedLeft = null;
+        this.selectedRight = null;
+        this.vaultInput = '';
+        this.isChecking = false;
+
+        this.updateHeaderScoreboard();
+        document.getElementById('turn-round-title').textContent = `Babak ${this.currentRoundIndex + 1}/${this.activeRounds.length}`;
+        document.getElementById('turn-planet-tag').textContent = r.planet;
+        document.getElementById('current-player-turn-text').textContent = `Giliran ${cur.name}`;
+
+        const avatar = document.getElementById('turn-avatar-badge');
+        if (r.playerId === 'p1') {
+          avatar.className = 'w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-cyan-500 flex items-center justify-center text-lg shadow-md shrink-0';
+          avatar.textContent = '🚀';
+        } else {
+          avatar.className = 'w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-orange-500 flex items-center justify-center text-lg shadow-md shrink-0';
+          avatar.textContent = '🛸';
+        }
+
+        const cont = document.getElementById('gameplay-container');
+        cont.innerHTML = '';
+
+        if (r.type === 'match') {
+          this.shuffleTarget(r.targets);
+          this.renderMatchRound(r, cont);
+        } else if (r.type === 'balance') {
+          this.renderBalanceRound(r, cont);
+        } else if (r.type === 'chisel') {
+          this.renderChiselRound(r, cont);
+        } else if (r.type === 'vault') {
+          this.renderVaultRound(r, cont);
+        }
+
+        this.startTimer();
+        soundNarrator.speakCurrentTurn();
+      }
+
+      /* --- MECHANIC 1: MATCHING LOGISTICS --- */
+      renderMatchRound(r, c) {
+        const isP1 = r.playerId === 'p1';
+        const color = isP1 ? 'cyan' : 'orange';
+        c.innerHTML = `
+          <div class="flex justify-between items-center border-b border-slate-700/80 pb-2">
+            <h4 class="font-bold text-xs sm:text-sm text-${color}-300 flex items-center gap-1.5">
+              <span>🔗</span> ${r.title}
+            </h4>
+            <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full border border-slate-700">
+              Selesai: ${r.data.filter(d => d.matched).length}/${r.data.length}
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-300">Pilih satu kartu di kiri dan pasangkan nilainya di kanan:</p>
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <div id="m-l" class="space-y-2"></div>
+            <div id="m-r" class="space-y-2"></div>
+          </div>
+        `;
+
+        const leftBox = c.querySelector('#m-l');
+        const rightBox = c.querySelector('#m-r');
+
+        r.data.forEach(d => {
+          const btn = document.createElement('button');
+          if (d.matched) {
+            btn.className = 'w-full p-2.5 rounded-2xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs cursor-default flex justify-between items-center';
+            btn.innerHTML = `<span class="truncate">${d.label}</span><span>✅</span>`;
+          } else if (this.selectedLeft === d.id) {
+            btn.className = `w-full p-2.5 rounded-2xl bg-${color}-600 border border-white text-white text-xs font-bold flex justify-between items-center shadow-lg`;
+            btn.innerHTML = `<span class="truncate">${d.label}</span><span>👉</span>`;
+          } else {
+            btn.className = 'w-full p-2.5 rounded-2xl bg-slate-800/90 border border-slate-700 hover:bg-slate-700 text-slate-200 text-xs flex justify-between items-center transition';
+            btn.innerHTML = `<span class="truncate">${d.label}</span><span></span>`;
+          }
+          if (!d.matched) {
+            btn.onclick = () => {
+              if (!this.isChecking) {
+                soundFx.click();
+                this.selectedLeft = d.id;
+                this.renderMatchRound(r, c);
+                this.checkMatch(r, c);
+              }
+            };
+          }
+          leftBox.appendChild(btn);
+        });
+
+        r.targets.forEach(t => {
+          const btn = document.createElement('button');
+          if (t.matched) {
+            btn.className = 'w-full p-2.5 rounded-2xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs cursor-default flex justify-between items-center';
+            btn.innerHTML = `<span class="truncate">${t.label}</span><span>✅</span>`;
+          } else if (this.selectedRight === t.id) {
+            btn.className = `w-full p-2.5 rounded-2xl bg-${color}-600 border border-white text-white text-xs font-bold flex justify-between items-center shadow-lg`;
+            btn.innerHTML = `<span class="truncate">${t.label}</span><span>👈</span>`;
+          } else {
+            btn.className = 'w-full p-2.5 rounded-2xl bg-slate-800/90 border border-slate-700 hover:bg-slate-700 text-slate-200 text-xs flex justify-between items-center transition';
+            btn.innerHTML = `<span class="truncate">${t.label}</span><span></span>`;
+          }
+          if (!t.matched) {
+            btn.onclick = () => {
+              if (!this.isChecking) {
+                soundFx.click();
+                this.selectedRight = t.id;
+                this.renderMatchRound(r, c);
+                this.checkMatch(r, c);
+              }
+            };
+          }
+          rightBox.appendChild(btn);
+        });
+      }
+
+      checkMatch(r, c) {
+        if (!this.selectedLeft || !this.selectedRight) return;
+        const leftItem = r.data.find(x => x.id === this.selectedLeft);
+        const rightItem = r.targets.find(x => x.id === this.selectedRight);
+
+        if (leftItem.targetId === rightItem.id) {
+          soundFx.success();
+          leftItem.matched = true;
+          rightItem.matched = true;
+          this.selectedLeft = null;
+          this.selectedRight = null;
+          this.renderMatchRound(r, c);
+
+          if (r.data.every(x => x.matched)) {
+            this.stopTimer();
+            soundFx.meriah();
+            setTimeout(() => this.finishCurrentRound(100, 3), 500);
+          }
+        } else {
+          soundFx.boom();
+          // Penalti ketidaktelitian agar siswa tidak sekadar menebak acak
+          const cur = this.getCurrentPlayer();
+          cur.score = Math.max(0, cur.score - 5);
+          this.updateHeaderScoreboard();
+          this.isChecking = true;
+          setTimeout(() => {
+            this.selectedLeft = null;
+            this.selectedRight = null;
+            this.isChecking = false;
+            this.renderMatchRound(r, c);
+          }, 450);
+        }
+      }
+
+      /* --- MECHANIC 2: TORQUE BALANCE SCALES --- */
+      renderBalanceRound(r, c) {
+        const isP1 = r.playerId === 'p1';
+        const color = isP1 ? 'cyan' : 'orange';
+        let currentWeight = 0;
+        r.modules.forEach(m => { if (m.used) currentWeight += m.kg; });
+        const isBalanced = currentWeight === r.targetKg;
+
+        // Visual tilt rotation angle
+        let tilt = 0;
+        if (currentWeight < r.targetKg) {
+          tilt = Math.min(8, Math.max(2, (r.targetKg - currentWeight) / 250));
+        } else if (currentWeight > r.targetKg) {
+          tilt = Math.max(-8, Math.min(-2, (r.targetKg - currentWeight) / 250));
+        }
+
+        c.innerHTML = `
+          <div class="flex justify-between items-center border-b border-slate-700/80 pb-2">
+            <h4 class="font-bold text-xs sm:text-sm text-${color}-300 flex items-center gap-1.5">
+              <span>⚖️</span> ${r.title}
+            </h4>
+            <span class="text-xs font-bold text-amber-300">Target: ${r.targetDisplay}</span>
+          </div>
+
+          <div class="py-5 relative max-w-sm mx-auto w-full">
+            <div class="h-3 bg-gradient-to-r from-blue-500 via-sky-300 to-amber-500 rounded-full transition-transform duration-500 relative flex justify-between items-center px-4" style="transform: rotate(${tilt}deg);">
+              <div class="w-20 h-11 -mt-12 -ml-3 bg-slate-900 border border-blue-400 rounded-xl p-1 flex flex-col items-center justify-center shadow-lg">
+                <span class="text-[8px] font-bold text-slate-300">Target</span>
+                <span class="text-[10px] text-cyan-300 font-black">${r.targetDisplay}</span>
+              </div>
+              <div class="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[16px] border-b-slate-400 absolute left-1/2 -bottom-3 -translate-x-1/2"></div>
+              <div class="w-22 h-11 -mt-12 -mr-3 bg-slate-900 border border-${color}-400 rounded-xl p-1 flex flex-col items-center justify-center shadow-lg">
+                <span class="text-[8px] font-bold text-slate-300">Muatan Sayap</span>
+                <span class="text-[10px] text-amber-300 font-black">${currentWeight} kg</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center py-1">
+            <div class="font-black text-xs sm:text-sm ${isBalanced ? 'text-emerald-400' : 'text-amber-400'}">
+              Status: ${currentWeight} kg / ${r.targetKg} kg ${isBalanced ? '(SEIMBANG! ✅)' : ''}
+            </div>
+          </div>
+
+          <div id="m-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
+
+          <button id="btn-lock-balance" class="w-full mt-2 py-3 rounded-2xl text-xs font-black transition ${isBalanced ? `bg-${color}-500 hover:bg-${color}-400 text-slate-950 shadow-lg cursor-pointer` : 'bg-slate-800 text-slate-500 cursor-not-allowed'}" ${!isBalanced ? 'disabled' : ''}>
+            Kunci Keseimbangan 🚀
+          </button>
+        `;
+
+        const grid = c.querySelector('#m-grid');
+        r.modules.forEach(m => {
+          const btn = document.createElement('button');
+          btn.className = `p-2.5 rounded-2xl border text-xs text-left leading-tight transition ${m.used ? 'bg-blue-900/90 border-cyan-300 shadow-md' : 'bg-slate-800/80 border-slate-700 hover:bg-slate-700'}`;
+          btn.innerHTML = `
+            <div class="flex items-center gap-1.5">
+              <span class="text-lg">${m.icon}</span> 
+              <span class="text-white font-bold truncate">${m.label}</span>
+            </div>
+            <div class="text-amber-300 font-bold pl-7 mt-0.5 text-[11px]">${m.raw}</div>
+          `;
+          btn.onclick = () => {
+            soundFx.click();
+            m.used = !m.used;
+            this.renderBalanceRound(r, c);
+          };
+          grid.appendChild(btn);
+        });
+
+        c.querySelector('#btn-lock-balance').onclick = () => {
+          if (isBalanced) {
+            this.stopTimer();
+            soundFx.meriah();
+            this.finishCurrentRound(100, 3);
+          }
+        };
+      }
+
+      /* --- MECHANIC 3: CRYSTAL LASER CHISEL WITH DISTRACTORS --- */
+      renderChiselRound(r, c) {
+        const isP1 = r.playerId === 'p1';
+        const color = isP1 ? 'cyan' : 'orange';
+        const crystals = r.crystals;
+        const total = crystals.c1.current + crystals.c2.current + crystals.c3.current;
+        const isPerfect = total === r.limitGram;
+
+        c.innerHTML = `
+          <div class="flex justify-between items-center border-b border-slate-700/80 pb-2">
+            <h4 class="font-bold text-xs sm:text-sm text-${color}-300 flex items-center gap-1.5">
+              <span>💎</span> ${r.title}
+            </h4>
+            <span class="text-xs text-amber-300 font-bold">Target Tepat: ${r.limitGram} g</span>
+          </div>
+          <p class="text-[11px] text-slate-300">Pilih kristal yang perlu dipangkas. <span class="text-amber-300 font-semibold">Awas kristal pengecoh!</span> Tidak semua kristal harus dipotong:</p>
+
+          <div class="text-center py-2 bg-slate-950/60 rounded-2xl border border-slate-800 my-1">
+            <span class="text-[10px] text-slate-400">Total Berat Kristal Saat Ini:</span>
+            <div class="font-black text-sm sm:text-base ${isPerfect ? 'text-emerald-400' : 'text-amber-400'}">
+              ${total} g ${isPerfect ? '✅ (Tepat!)' : `(Selisih: ${Math.abs(total - r.limitGram)}g)`}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            ${['c1', 'c2', 'c3'].map(k => `
+              <button id="btn-chisel-${k}" class="p-3 rounded-2xl border text-xs text-white flex flex-col items-center justify-center transition active:scale-95 shadow ${crystals[k].chiseled ? 'bg-indigo-950/80 border-cyan-400 opacity-90' : 'bg-slate-800/90 hover:bg-slate-700 border-slate-600'}">
+                <span class="text-xs font-bold">${crystals[k].chiseled ? '✂️ Terpangkas' : '⚡ Pangkas'}</span>
+                <span class="text-[10px] text-rose-300 font-semibold">-${crystals[k].cut}g</span>
+                <span class="text-amber-300 font-bold text-xs mt-1">${crystals[k].current}g</span>
+                <span class="text-[9px] text-slate-400">${crystals[k].name}</span>
+              </button>
+            `).join('')}
+          </div>
+
+          <div class="flex gap-2 mt-2">
+            <button id="btn-reset-chisel" class="w-1/3 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-xs font-bold transition">
+              Reset
+            </button>
+            <button id="btn-submit-chisel" class="w-2/3 py-2.5 rounded-2xl font-black text-xs transition ${isPerfect ? `bg-${color}-500 hover:bg-${color}-400 text-slate-950 shadow-lg cursor-pointer` : 'bg-slate-800 text-slate-500 cursor-not-allowed'}" ${!isPerfect ? 'disabled' : ''}>
+              Kunci Muatan Kristal 💎
+            </button>
+          </div>
+        `;
+
+        ['c1', 'c2', 'c3'].forEach(k => {
+          c.querySelector(`#btn-chisel-${k}`).onclick = () => {
+            if (!crystals[k].chiseled) {
+              soundFx.laser();
+              crystals[k].current -= crystals[k].cut;
+              crystals[k].chiseled = true;
+              this.renderChiselRound(r, c);
+            } else {
+              soundFx.boom();
+            }
+          };
+        });
+
+        c.querySelector('#btn-reset-chisel').onclick = () => {
+          soundFx.click();
+          ['c1', 'c2', 'c3'].forEach(k => {
+            crystals[k].current = crystals[k].initial;
+            crystals[k].chiseled = false;
+          });
+          this.renderChiselRound(r, c);
+        };
+
+        c.querySelector('#btn-submit-chisel').onclick = () => {
+          if (isPerfect) {
+            this.stopTimer();
+            soundFx.meriah();
+            this.finishCurrentRound(100, 3);
+          }
+        };
+      }
+
+      /* --- MECHANIC 4: VAULT CODE CRACKER --- */
+      renderVaultRound(r, c) {
+        const isP1 = r.playerId === 'p1';
+        const color = isP1 ? 'cyan' : 'orange';
+        const answerLength = r.answer.length;
+        const curPlayer = this.players[r.playerId];
+        const p1Name = this.players.p1.name;
+        const p2Name = this.players.p2.name;
+
+        // Personalisasikan teks soal dengan nama pemain yang sedang bermain
+        const formattedQuestion = r.questionHtml
+          .replace(/Kadet 1/g, p1Name)
+          .replace(/Kadet 2/g, p2Name);
+
+        c.innerHTML = `
+          <div class="text-xs bg-slate-900/90 p-3 rounded-2xl border ${isP1 ? 'border-cyan-500/50' : 'border-orange-500/50'} mb-1 text-slate-200 leading-relaxed shadow-sm">
+            <div class="flex items-center justify-between pb-1.5 border-b border-slate-700/60 mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${isP1 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50' : 'bg-orange-500/20 text-orange-300 border border-orange-400/50'}">
+                ${isP1 ? `🚀 SOAL KHUSUS PEMAIN 1 (${curPlayer.name})` : `🛸 SOAL KHUSUS PEMAIN 2 (${curPlayer.name})`}
+              </span>
+              <span class="text-[9px] text-amber-300 font-bold bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-800">
+                Panjang Sandi: ${answerLength} Digit
+              </span>
+            </div>
+            ${formattedQuestion}
+            <div class="text-[9px] text-slate-400 mt-2 p-1.5 rounded-xl bg-slate-950/70 border border-slate-800">
+              💡 <strong>Petunjuk:</strong> ${r.hint}
+            </div>
+          </div>
+
+          <div class="text-center bg-slate-950 border border-slate-700/80 rounded-2xl py-2 mb-2 font-mono text-xl tracking-[0.5em] text-emerald-400 shadow-inner">
+            ${this.vaultInput.padEnd(answerLength, '_')}
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 max-w-[220px] mx-auto pb-1">
+            ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 'C', 0, 'OK'].map(k => `
+              <button data-key="${k}" class="vault-btn py-2.5 rounded-2xl ${k === 'OK' ? `bg-${color}-500 text-slate-950 font-black` : k === 'C' ? 'bg-rose-900/80 text-rose-200' : 'bg-slate-800 hover:bg-slate-700 text-white font-bold'} text-xs transition shadow active:scale-95">
+                ${k}
+              </button>
+            `).join('')}
+          </div>
+        `;
+
+        c.querySelectorAll('.vault-btn').forEach(btn => {
+          btn.onclick = () => {
+            const key = btn.getAttribute('data-key');
+            soundFx.click();
+            if (key === 'C') {
+              this.vaultInput = '';
+            } else if (key === 'OK') {
+              if (this.vaultInput === r.answer) {
+                this.stopTimer();
+                soundFx.meriah();
+                this.finishCurrentRound(100, 3);
+              } else {
+                soundFx.boom();
+                // Penalti kecil -5 jika salah input sandi brankas
+                const cur = this.getCurrentPlayer();
+                cur.score = Math.max(0, cur.score - 5);
+                this.updateHeaderScoreboard();
+                this.vaultInput = '';
+              }
+            } else if (this.vaultInput.length < answerLength) {
+              this.vaultInput += key;
+            }
+            this.renderVaultRound(r, c);
+          };
+        });
+      }
+
+      finishCurrentRound(pts, stars) {
+        const cur = this.getCurrentPlayer();
+        // Perhitungan Skor Adil: Nilai Misi (100 pt) + Bonus Waktu Proporsional (Maksimal 25 pt)
+        const timeBonus = Math.round((this.remainingTime / this.roundTimeLimit) * 25);
+        cur.score += pts + timeBonus;
+        cur.stars += stars;
+        this.updateHeaderScoreboard();
+        this.currentRoundIndex++;
+
+        const marsThreshold = this.gameMode === 'solo' ? 4 : 8;
+        const venusThreshold = this.gameMode === 'solo' ? 8 : 16;
+
+        if (this.currentRoundIndex === marsThreshold) {
+          document.getElementById('screen-arena')?.classList.add('hidden');
+          document.getElementById('screen-transit-mars')?.classList.remove('hidden');
+          soundNarrator.speak('Kunci 1 Bumi terbuka! Meluncur ke Mars!');
+        } else if (this.currentRoundIndex === venusThreshold) {
+          document.getElementById('screen-arena')?.classList.add('hidden');
+          document.getElementById('screen-transit-venus')?.classList.remove('hidden');
+          soundNarrator.speak('Kunci 2 Mars terbuka! Membelah atmosfer Venus!');
+        } else if (this.currentRoundIndex >= this.activeRounds.length) {
+          this.showVictoryScreen();
+        } else {
+          this.loadCurrentRound();
+        }
+      }
+
+      launchMarsSector() {
+        soundFx.click();
+        document.getElementById('screen-transit-mars')?.classList.add('hidden');
+        document.getElementById('screen-arena')?.classList.remove('hidden');
+        this.loadCurrentRound();
+      }
+
+      launchVenusSector() {
+        soundFx.click();
+        document.getElementById('screen-transit-venus')?.classList.add('hidden');
+        document.getElementById('screen-arena')?.classList.remove('hidden');
+        this.loadCurrentRound();
+      }
+
+      getWinner() {
+        if (this.players.p1.knockedOut && !this.players.p2.knockedOut) return this.players.p2;
+        if (this.players.p2.knockedOut && !this.players.p1.knockedOut) return this.players.p1;
+        if (this.players.p1.score > this.players.p2.score) return this.players.p1;
+        if (this.players.p2.score > this.players.p1.score) return this.players.p2;
+        return 'draw';
+      }
+
+      showVictoryScreen() {
+        this.stopTimer();
+        soundFx.meriah();
+        ['screen-arena', 'screen-transit-mars', 'screen-transit-venus'].forEach(id => {
+          document.getElementById(id)?.classList.add('hidden');
+        });
+        document.getElementById('screen-victory')?.classList.remove('hidden');
+
+        // Hadiah Ketelitian: Bonus Nyawa Tersisa (+50 Poin per ❤️)
+        ['p1', 'p2'].forEach(p => {
+          const pl = this.players[p];
+          if (!pl.knockedOut && pl.lives > 0) {
+            pl.score += pl.lives * 50;
+          }
+        });
+        this.updateHeaderScoreboard();
+
+        ['p1', 'p2'].forEach(p => {
+          const nameEl = document.getElementById(`pod-${p}-name`);
+          if (nameEl) {
+            nameEl.textContent = this.players[p].name;
+            document.getElementById(`pod-${p}-score`).textContent = this.players[p].score;
+            const detEl = document.getElementById(`pod-${p}-details`);
+            if (detEl) {
+              detEl.textContent = `${this.players[p].stars}⭐ • Sisa ${this.players[p].lives}❤️ (+${this.players[p].lives * 50} Pt)`;
+            }
+          }
+        });
+
+        const winner = this.getWinner();
+        if (this.gameMode === 'solo') {
+          document.getElementById('podium-p2')?.classList.add('hidden');
+          document.getElementById('podium-grid').className = 'grid grid-cols-1 gap-2 text-left max-w-[200px] mx-auto';
+          document.getElementById('victory-heading').textContent = this.players.p1.lives <= 0 ? 'GAME OVER! 💀' : 'MISI SELESAI! 🥇';
+          document.getElementById('pod-p1-rank').textContent = this.players.p1.lives <= 0 ? 'GUGUR' : 'KAPTEN';
+
+          if (this.players.p1.lives > 0) {
+            setTimeout(() => {
+              document.getElementById('fuel-emergency-overlay')?.classList.remove('hidden');
+              soundNarrator.speak('Peringatan Kapten! Bahan bakar kosong. Segera temui Robot Warak di Stasiun GEM untuk mengolah sampah menjadi metana!');
+            }, 6000);
+          }
+        } else {
+          document.getElementById('podium-p2')?.classList.remove('hidden');
+          document.getElementById('podium-grid').className = 'grid grid-cols-2 gap-2 text-left';
+          if (winner === 'draw') {
+            document.getElementById('victory-heading').textContent = 'HASIL SERI! 🤝';
+            document.getElementById('pod-p1-rank').textContent = 'JUARA';
+            document.getElementById('pod-p2-rank').textContent = 'JUARA';
+          } else {
+            document.getElementById('victory-heading').textContent = `JUARA: ${winner.name}`;
+            document.getElementById(winner === this.players.p1 ? 'pod-p1-rank' : 'pod-p2-rank').textContent = 'JUARA 1';
+            document.getElementById(winner === this.players.p1 ? 'pod-p2-rank' : 'pod-p1-rank').textContent = 'RUNNER';
+          }
+        }
+        soundNarrator.speakVictory();
+      }
+
+      rematch() {
+        soundFx.click();
+        this.startDuelGame();
+      }
+    }
+
+    const gameEngine = new GameEngine();
+  </script>
+</body>
+</html>
